@@ -1,0 +1,55 @@
+---
+interface Props {
+    name: string;
+    position?:
+        | "top-left"
+        | "top-right"
+        | "bottom-left"
+        | "bottom-right"
+        | "center";
+    imgsrc: string;
+    link?: string;
+}
+
+const { name, imgsrc, position = "center", link } = Astro.props;
+
+const positionClasses = {
+    "top-left": "items-start justify-start",
+    "top-right": "items-start justify-end",
+    "bottom-left": "items-end justify-start",
+    "bottom-right": "items-end justify-end",
+    center: "items-center justify-center",
+};
+---
+
+<a
+    href={link}
+    target="_self"
+    class="group relative aspect-video bg-white/5 rounded-2xl border border-white/10 overflow-hidden cursor-pointer animate-reveal"
+    style="animation-delay: 0.1s"
+>
+    <!-- Background Image -->
+    <img
+        src={imgsrc}
+        alt={name}
+        class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-70 transition-all duration-700 group-hover:scale-110"
+    />
+
+    <!-- Hover Gradient Overlay -->
+    <div
+        class="absolute inset-0 bg-gradient-to-br from-cyber-cyan/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+    >
+    </div>
+
+    <!-- Content Overlay -->
+    <div class={`absolute inset-0 flex p-6 ${positionClasses[position]}`}>
+        <div
+            class="backdrop-blur-md bg-black/40 border border-white/10 px-4 py-2 rounded-xl shadow-2xl"
+        >
+            <span
+                class="text-xs font-bold tracking-[0.3em] uppercase text-gray-300 group-hover:text-cyber-cyan transition-colors"
+                >{name}</span
+            >
+        </div>
+    </div>
+</a>

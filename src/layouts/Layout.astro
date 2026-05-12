@@ -1,0 +1,53 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = "PalOntEr | Cyber-Minimalist Portfolio",
+	description = "A modern, high-performance developer portfolio with a cyber-minimalist design.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body class="selection:bg-cyber-cyan/30 selection:text-cyber-cyan">
+		<!-- Dynamic Background -->
+		<div
+			class="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,_#001a1a_0%,_#000000_100%)]"
+		>
+		</div>
+		<div
+			class="fixed inset-0 -z-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 pointer-events-none"
+		>
+		</div>
+
+		<Header />
+
+		<main class="min-h-screen">
+			<slot />
+		</main>
+
+		<Footer />
+	</body>
+</html>

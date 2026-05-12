@@ -1,0 +1,45 @@
+---
+import { Github, Linkedin, Mail } from "lucide-astro";
+---
+
+<footer
+  class="w-full py-12 px-6 border-t border-cyber-border bg-black/50 backdrop-blur-sm"
+>
+  <div
+    class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8"
+  >
+    <div class="flex flex-col items-center md:items-start gap-4">
+      <div class="flex items-center gap-2">
+        <span class="text-xl font-bold tracking-tighter text-white">
+          Pal<span class="text-cyber-cyan">Ont</span>Er
+        </span>
+      </div>
+      <p class="text-sm text-gray-500 max-w-xs text-center md:text-left">
+        Building high-performance digital experiences with a focus on scalable
+        design.
+      </p>
+    </div>
+
+    <div class="flex flex-col items-center md:items-end gap-6">
+      <div class="flex gap-6">
+        <a
+          href="https://github.com/PalOntEr"
+          target="_blank"
+          class="text-gray-400 hover:text-cyber-cyan transition-colors"
+        >
+          <Github class="w-5 h-5" />
+        </a>
+        <a
+          href="https://linkedin.com/in/mazp"
+          target="_blank"
+          class="text-gray-400 hover:text-cyber-cyan transition-colors"
+        >
+          <Linkedin class="w-5 h-5" />
+        </a>
+      </div>
+      <p class="text-xs text-gray-600">
+        &copy; {new Date().getFullYear()} PalOntEr. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
