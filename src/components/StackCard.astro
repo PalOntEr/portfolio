@@ -4,9 +4,10 @@ import { Image } from "astro:assets";
 interface Props {
     name: string;
     svgIcon: string;
+    id: string;
 }
 
-const { svgIcon, name } = Astro.props;
+const { svgIcon, name, id } = Astro.props;
 ---
 
 <div class="flex items-center gap-3 group">
@@ -16,10 +17,13 @@ const { svgIcon, name } = Astro.props;
         <Image
             src={svgIcon}
             alt={name}
+            id={id}
             class="w-5 h-5"
             width={128}
             height={128}
         />
     </div>
-    <span class="text-sm font-bold tracking-widest uppercase">{name}</span>
+    <span class="text-sm font-bold tracking-widest uppercase select-none"
+        >{name}</span
+    >
 </div>
