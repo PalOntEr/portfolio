@@ -3,6 +3,7 @@ import ProjectCard from "../components/ProjectCard.astro";
 import StackCard from "../components/StackCard.astro";
 import Layout from "../layouts/Layout.astro";
 import { ArrowDown, ArrowRight } from "lucide-astro";
+import Prism from "../components/PrismBack.tsx";
 ---
 
 <Layout title="PalOntEr Main page">
@@ -10,6 +11,23 @@ import { ArrowDown, ArrowRight } from "lucide-astro";
 	<section
 		class="relative flex flex-col items-center justify-center px-6 py-20 md:py-24 text-center"
 	>
+		<!-- Background Prism -->
+		<div
+			class="absolute inset-0 -top-80 -z-10 opacity-50 pointer-events-none select-none"
+		>
+			<Prism
+				client:only="react"
+				timeScale={0.3}
+				scale={1.2}
+				height={5}
+				baseWidth={7}
+				noise={0.2}
+				hueShift={0}
+				colorFrequency={0.25}
+				glow={1}
+			/>
+		</div>
+
 		<!-- Landing Screen -->
 		<div
 			class="relative flex flex-col items-center justify-center h-[calc(100vh-5rem)] min-h-fit text-center"
