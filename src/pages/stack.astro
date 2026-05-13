@@ -1,0 +1,139 @@
+---
+import StackCard from "../components/StackCard.astro";
+import Layout from "../layouts/Layout.astro";
+
+const categories = [
+    {
+        title: "Languages",
+        techs: [
+            { name: "JavaScript", icon: "/stack/javascript-original.svg" },
+            { name: "TypeScript", icon: "/stack/typescript-original.svg" },
+            { name: "Python", icon: "/stack/python-original.svg" },
+            { name: "C#", icon: "/stack/csharp-original.svg" },
+            { name: "C++", icon: "/stack/cplusplus-original.svg" },
+            { name: "Swift", icon: "/stack/swift-original.svg" },
+            { name: "HTML5", icon: "/stack/html5-original.svg" },
+        ],
+    },
+    {
+        title: "Frontend & Styling",
+        techs: [
+            { name: "TailwindCSS", icon: "/stack/tailwindcss-original.svg" },
+        ],
+    },
+    {
+        title: "Backend & Frameworks",
+        techs: [
+            { name: "Express", icon: "/stack/express-original.svg" },
+            { name: "FastAPI", icon: "/stack/fastapi-original.svg" },
+            { name: "Flask", icon: "/stack/flask-original.svg" },
+            { name: ".NET Core", icon: "/stack/dotnetcore-original.svg" },
+            { name: "Astro", icon: "/stack/astro-original.svg" },
+        ],
+    },
+    {
+        title: "Databases",
+        techs: [
+            { name: "MySQL", icon: "/stack/mysql-original.svg" },
+            {
+                name: "MS SQL Server",
+                icon: "/stack/microsoftsqlserver-original.svg",
+            },
+            { name: "SQLite", icon: "/stack/sqlite-original.svg" },
+        ],
+    },
+    {
+        title: "Cloud & DevOps",
+        techs: [
+            {
+                name: "AWS",
+                icon: "/stack/amazonwebservices-original-wordmark.svg",
+            },
+            { name: "Google Cloud", icon: "/stack/googlecloud-original.svg" },
+            { name: "Docker", icon: "/stack/docker-plain.svg" },
+            { name: "Firebase", icon: "/stack/firebase-original.svg" },
+        ],
+    },
+    {
+        title: "Tools & Design",
+        techs: [
+            { name: "Figma", icon: "/stack/figma-original.svg" },
+            { name: "Postman", icon: "/stack/postman-original.svg" },
+            { name: "Swagger", icon: "/stack/swagger-original.svg" },
+            { name: "NPM", icon: "/stack/npm-original.svg" },
+            { name: "Node.js", icon: "/stack/nodejs-original.svg" },
+        ],
+    },
+    {
+        title: "Version Control Systems",
+        techs: [
+            { name: "GitHub", icon: "/stack/github-original.svg" },
+            { name: "Git", icon: "/stack/git-original.svg" },
+            { name: "Bitbucket", icon: "/stack/bitbucket-original.svg" },
+            { name: "SourceTree", icon: "/stack/sourcetree-original.svg" },
+        ],
+    },
+    {
+        title: "Development Environments",
+        techs: [
+            { name: "VS Code", icon: "/stack/vscode-original.svg" },
+            { name: "Visual Studio", icon: "/stack/visualstudio-original.svg" },
+            { name: "Xcode", icon: "/stack/xcode-original.svg" },
+        ],
+    },
+    {
+        title: "Systems & Engines",
+        techs: [
+            { name: "Linux", icon: "/stack/linux-original.svg" },
+            { name: "Ubuntu", icon: "/stack/ubuntu-original.svg" },
+            { name: "Windows", icon: "/stack/windows11-original.svg" },
+            { name: "Unity", icon: "/stack/unity-original.svg" },
+            { name: "Unreal Engine", icon: "/stack/unrealengine-original.svg" },
+            { name: "Arduino", icon: "/stack/arduino-original.svg" },
+            { name: "OpenGL", icon: "/stack/opengl-plain.svg" },
+        ],
+    },
+];
+---
+
+<Layout title="PalOntEr | Technical Stack">
+    <section class="max-w-7xl mx-auto px-6 py-24 md:py-32">
+        <header class="mb-16 animate-reveal">
+            <h1
+                class="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tighter"
+            >
+                Technical <span class="text-cyber-cyan">Stack</span>
+            </h1>
+            <p
+                class="text-gray-400 max-w-2xl text-lg border-l-2 border-cyber-cyan pl-6"
+            >
+                A comprehensive directory of the technologies, tools, and
+                systems I have used through out my journey.
+            </p>
+        </header>
+
+        <div class="space-y-20">
+            {
+                categories.map((category, index) => (
+                    <div
+                        class="animate-reveal"
+                        style={`animation-delay: ${0.1 * (index + 1)}s`}
+                    >
+                        <h2 class="text-2xl font-bold text-white mb-8 uppercase tracking-widest flex items-center gap-4">
+                            <span class="text-cyber-cyan">//</span>{" "}
+                            {category.title}
+                        </h2>
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                            {category.techs.map((tech) => (
+                                <StackCard
+                                    name={tech.name}
+                                    svgIcon={tech.icon}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
+</Layout>
