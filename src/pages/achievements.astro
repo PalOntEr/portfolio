@@ -1,103 +1,55 @@
 ---
-import ProjectCard from "../components/ProjectCard.astro";
 import Layout from "../layouts/Layout.astro";
-import { Layers, Code2 } from "lucide-astro";
+import AchievementCard from "../components/AchievementCard.astro";
+import { Code2, Layers } from "lucide-astro";
 
-const projects = [
+
+const achievements = [
     {
-        name: "Colegio San Pedro de Idiomas",
-        imgsrc: "/portfolio/projects/CSI.png",
+        name: "NASA International Space Apps Challenge 2025 - Luxe",
+        imgsrc: "/portfolio/projects/Luxe.jpg",
         description:
-            "Web page for Colegio San Pedro de Idiomas, an English language school. Hosted in Google Cloud.",
-        link: "https://csimx.org/",
-        stack: [
-            "Astro",
-            "TypeScript",
-            "TailwindCSS",
-            "Google Cloud Run",
-            "Firebase",
-        ],
-        types: ["Web Page"],
+            "First place and global nominee in the NASA International Space Apps Challenge 2025 with 'Luxe', an AI-powered data analysis tool that predicted the possibility of celestial bodies being exoplanets based on data provided byNASA.",
+        link: "https://www.linkedin.com/feed/update/urn:li:activity:7383516554531074048/",
+        stack: ["Python", "Flask", "Pandas"],
+        types: ["Won Hackathon"],
     },
     {
-        name: "Medical 365",
-        imgsrc: "/portfolio/projects/Medical365.png",
+        name: "Swift Changemakers Hackathon 2025 - Liverpool Challenge",
+        imgsrc: "/portfolio/projects/Liverpool.jpg",
         description:
-            "Health incident and employee status management system that helps manage health reports, track employee status, and generate reports.",
-        link: "https://github.com/oscarvasquez28/Medical-365",
-        stack: ["React", "Node.js", "MongoDB", "Express"],
-        types: ["Web Page"],
+            "First place in the Liverpool Challenge of the Swift Changemakers Hackathon 2025 with a solution that helped vendors and customers of Liverpool by providing a mobile application for vendors that combined the online shopping experience and local services.",
+        link: "https://www.linkedin.com/feed/update/urn:li:activity:7330432103630725120/",
+        stack: ["Swift", "Firebase"],
+        types: ["Won Hackathon"],
     },
     {
-        name: "Math Meet",
-        imgsrc: "/portfolio/projects/MathMeet.png",
-        description:
-            "Video chat application that supports real-time chat and videochat functionality.",
-        link: "https://github.com/PalOntEr/MathMeet",
-        stack: ["C#", "React", "ASP.NET Core", "MS SQL"],
-        types: ["Web Page"],
-    },
-    {
-        name: "Derby Drift",
-        imgsrc: "/portfolio/projects/DerbyDrift.png",
-        description:
-            "Online multiplayer web game that features two exciting gamemodes that promise fun and competitive play.",
-        link: "https://github.com/oscarvasquez28/Derby-Drift",
-        stack: ["TypeScript", "Node.js", "Three.js", "TailwindCSS"],
-        types: ["Videogame"],
-    },
-    {
-        name: "Unmapped by TrePalDo",
+        name: "Hack Nation's AI Hackathon 2026 - Unmapped by TrePalDo",
         imgsrc: "/portfolio/projects/Unmapped.png",
         description:
-            "AI-powered infrastructure that maps real-world skills to jobs and opportunities. Configurable by country, enabling governments and organizations to connect youth with economic pathways using local data.",
-        link: "https://github.com/oscarvasquez28/World-Bank-Youth-Summit",
+            "Participant in the World Bank Youth Summit 2026 with 'Unmapped by TrePalDo', an AI-powered infrastructure that maps real-world skills to jobs and opportunities. Configurable by country, enabling governments and organizations to connect youth with economic pathways using local data.",
+        link: "https://projects.hack-nation.ai/#/project/1476d12d-35aa-4e47-8241-714a5e140542",
         stack: ["Python", "FastAPI", "Pandas", "SciKit-Learn"],
-        types: ["Web Page"],
-    },
-    {
-        name: "PhotoHub",
-        imgsrc: "/portfolio/projects/PhotoHub.png",
-        description:
-            "A desktop app that facilitates the application of image, video and camera filters using the CUDA cores of an NVIDIA graphics card",
-        link: "https://github.com/PalOntEr/PhotoHub",
-        stack: ["C#", "C++", "CUDA"],
-        types: ["Desktop App"],
-    },
-    {
-        name: "Contrincantes",
-        imgsrc: "/portfolio/projects/Contrincantes.jpg",
-        description:
-            "Capture the flag online multiplayer third person shooter style game with unique visuals and gameplay mechanics",
-        link: "https://www.youtube.com/watch?v=wAEE6pvhMfA",
-        stack: ["Unreal Engine", "C++"],
-        types: ["Videogame"],
-    },
-    {
-        name: "AntDefender",
-        imgsrc: "/portfolio/projects/AntDefender.png",
-        description: "A 3D tower defense game written in C++ using DirectX11.",
-        link: "https://github.com/PalOntEr/AntDefender",
-        stack: ["C++", "DirectX11"],
-        types: ["Videogame"],
+        types: ["Participated Hackathon"],
     },
 ];
 
-const allTypes = [...new Set(projects.flatMap((p) => p.types))].sort();
-const allTechs = [...new Set(projects.flatMap((p) => p.stack))].sort();
+const allTypes = [...new Set(achievements.flatMap((p) => p.types))].sort();
+const allTechs = [...new Set(achievements.flatMap((p) => p.stack))].sort();
 
-const projectsByType = allTypes.map((type) => ({
+const achievementsByType = allTypes.map((type) => ({
     title: type,
-    items: projects.filter((p) => p.types.includes(type)),
+    items: achievements.filter((p) => p.types.includes(type)),
 }));
 
-const projectsByTech = allTechs.map((tech) => ({
+const achievementsByTech = allTechs.map((tech) => ({
     title: tech,
-    items: projects.filter((p) => p.stack.includes(tech)),
+    items: achievements.filter((p) => p.stack.includes(tech)),
 }));
+
 ---
 
-<Layout title="PalOntEr | Projects">
+<Layout title="Achievements | PalOntEr Portfolio">
     <section class="flex flex-col px-6 max-w-7xl mx-auto pt-32 pb-20 gap-12">
         <header
             class="flex flex-col md:flex-row justify-between items-end gap-8 animate-reveal"
@@ -106,13 +58,15 @@ const projectsByTech = allTechs.map((tech) => ({
                 <h1
                     class="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tighter"
                 >
-                    Project <span class="text-cyber-cyan">Archives</span>
+                    My <span class="text-cyber-cyan text-4xl md:text-7xl">
+                        Achievements
+                    </span>
                 </h1>
                 <p
                     class="text-gray-400 text-lg border-l-2 border-cyber-cyan pl-6"
                 >
-                    A comprehensive library of my technical work, organized for
-                    efficient exploration.
+                    A showcase of my accomplishments, certifications, and
+                    milestones in the tech world.
                 </p>
             </div>
 
@@ -138,7 +92,7 @@ const projectsByTech = allTechs.map((tech) => ({
         <!-- View Containers -->
         <div id="view-by-type" class="view-container space-y-24">
             {
-                projectsByType.map((group, groupIdx) => (
+                achievementsByType.map((group, groupIdx) => (
                     <div
                         class="animate-reveal"
                         style={`animation-delay: ${groupIdx * 0.1}s`}
@@ -149,12 +103,12 @@ const projectsByTech = allTechs.map((tech) => ({
                             </h2>
                             <div class="h-px grow bg-linear-to-r from-cyber-cyan/50 to-transparent" />
                             <span class="text-xs font-mono text-cyber-cyan/60">
-                                {group.items.length} Project(s)
+                                {group.items.length} Achievement(s)
                             </span>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                            {group.items.map((project) => (
-                                <ProjectCard {...project} />
+                            {group.items.map((achievement) => (
+                                <AchievementCard {...achievement} />
                             ))}
                         </div>
                     </div>
@@ -164,7 +118,7 @@ const projectsByTech = allTechs.map((tech) => ({
 
         <div id="view-by-tech" class="view-container hidden space-y-24">
             {
-                projectsByTech.map((group, groupIdx) => (
+                achievementsByTech.map((group, groupIdx) => (
                     <div
                         class="animate-reveal"
                         style={`animation-delay: ${groupIdx * 0.05}s`}
@@ -175,18 +129,19 @@ const projectsByTech = allTechs.map((tech) => ({
                             </h2>
                             <div class="h-px grow bg-linear-to-r from-cyber-teal/50 to-transparent" />
                             <span class="text-xs font-mono text-cyber-teal/60">
-                                {group.items.length} Project(s)
+                                {group.items.length} Achievement(s)
                             </span>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                            {group.items.map((project) => (
-                                <ProjectCard {...project} />
+                            {group.items.map((achievement) => (
+                                <AchievementCard {...achievement} />
                             ))}
                         </div>
                     </div>
                 ))
             }
         </div>
+
     </section>
 
     <style>
