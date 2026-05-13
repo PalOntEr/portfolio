@@ -140,14 +140,38 @@ import { ArrowDown, ArrowRight } from "lucide-astro";
 
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
 			<ProjectCard
-				name="Data_Stream_v1.0"
-				imgsrc="/projects/data-stream.png"
-				position="bottom-left"
+				name="Colegio San Pedro de Idiomas"
+				imgsrc="/projects/CSI.png"
+				description="Web page for Colegio San Pedro de Idiomas, an English language school. Hosted in Google Cloud."
+				link="https://csimx.org/"
+				stack={[
+					"Astro",
+					"TypeScript",
+					"TailwindCSS",
+					"Google Cloud Run",
+					"Firebase",
+				]}
 			/>
 			<ProjectCard
-				name="Neural_Interface_v2.4"
-				imgsrc="/projects/neural-interface.png"
-				position="top-right"
+				name="PhotoHub"
+				imgsrc="/projects/PhotoHub.png"
+				description="A desktop app that facilitates the application of image, video and camera filters using the CUDA cores of an NVIDIA graphics card"
+				link="https://github.com/PalOntEr/PhotoHub"
+				stack={["C#", "C++", "CUDA"]}
+			/>
+			<ProjectCard
+				name="Medical 365"
+				imgsrc="/projects/Medical365.png"
+				description="Health incident and employee status management system that helps manage health reports, track employee status, and generate reports."
+				link="https://github.com/oscarvasquez28/Medical-365"
+				stack={["React", "Node.js", "MongoDB"]}
+			/>
+			<ProjectCard
+				name="Derby Drift"
+				imgsrc="/projects/DerbyDrift.png"
+				description="Online multiplayer web game that features two exciting gamemodes that promise fun and competitive play."
+				link="https://github.com/oscarvasquez28/Derby-Drift"
+				stack={["TypeScript", "Node.js", "Three.js", "TailwindCSS"]}
 			/>
 		</div>
 	</section>

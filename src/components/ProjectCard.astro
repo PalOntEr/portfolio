@@ -1,55 +1,90 @@
 ---
+import { Image } from "astro:assets";
 interface Props {
     name: string;
-    position?:
-        | "top-left"
-        | "top-right"
-        | "bottom-left"
-        | "bottom-right"
-        | "center";
     imgsrc: string;
     link?: string;
+    description?: string;
+    stack?: string[];
 }
 
-const { name, imgsrc, position = "center", link } = Astro.props;
+const { name, imgsrc, link, description, stack } = Astro.props;
 
-const positionClasses = {
-    "top-left": "items-start justify-start",
-    "top-right": "items-start justify-end",
-    "bottom-left": "items-end justify-start",
-    "bottom-right": "items-end justify-end",
-    center: "items-center justify-center",
+const stackSVG: Record<string, string> = {
+    "C#": "/stack/csharp-original.svg",
+    "C++": "/stack/cplusplus-original.svg",
+    CUDA: "/stack/cuda-original.svg",
+    "MS SQL": "/stack/microsoftsqlserver-original.svg",
+    React: "/stack/react-original.svg",
+    "Node.js": "/stack/nodejs-original.svg",
+    MongoDB: "/stack/mongodb-original.svg",
+    TypeScript: "/stack/typescript-original.svg",
+    "Three.js": "/stack/threejs-original.svg",
+    TailwindCSS: "/stack/tailwindcss-original.svg",
+    "ASP.NET Core": "/stack/dotnetcore-original.svg",
+    Astro: "/stack/astro-original.svg",
+    Python: "/stack/python-original.svg",
+    DirectX11: "/stack/directx-original.svg",
+    Firebase: "/stack/firebase-original.svg",
+    "Google Cloud Run": "/stack/googlecloud-original.svg",
+    "Unreal Engine": "/stack/unrealengine-original.svg",
+    Pandas: "/stack/pandas-original.svg",
+    FastAPI: "/stack/fastapi-original.svg",
+    "SciKit-Learn": "/stack/scikitlearn-original.svg",
+    Express: "/stack/express-original.svg",
 };
 ---
 
 <a
     href={link}
-    target="_self"
-    class="group relative aspect-video bg-white/5 rounded-2xl border border-white/10 overflow-hidden cursor-pointer animate-reveal"
+    target="_blank"
+    class="group aspect-video bg-white/5 rounded-2xl border border-white/10 overflow-hidden cursor-pointer animate-reveal"
     style="animation-delay: 0.1s"
 >
     <!-- Background Image -->
-    <img
+    <Image
         src={imgsrc}
         alt={name}
+        width={640}
+        height={480}
         class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-70 transition-all duration-700 group-hover:scale-110"
     />
 
     <!-- Hover Gradient Overlay -->
     <div
-        class="absolute inset-0 bg-gradient-to-br from-cyber-cyan/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        class="absolute inset-0 bg-linear-to-br from-cyber-cyan/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
     >
     </div>
 
     <!-- Content Overlay -->
-    <div class={`absolute inset-0 flex p-6 ${positionClasses[position]}`}>
-        <div
-            class="backdrop-blur-md bg-black/40 border border-white/10 px-4 py-2 rounded-xl shadow-2xl"
+    <div class={`w-full flex flex-col h-full p-6`}>
+        <span
+            class="backdrop-blur-md w-fit bg-black/40 border border-white/10 px-4 py-2 rounded-xl shadow-2xl mb-3 text-xs font-bold tracking-[0.3em] uppercase text-gray-300 group-hover:text-cyber-cyan transition-colors"
+            >{name}</span
         >
-            <span
-                class="text-xs font-bold tracking-[0.3em] uppercase text-gray-300 group-hover:text-cyber-cyan transition-colors"
-                >{name}</span
-            >
-        </div>
+        {
+            description && (
+                <p class="text-sm lg:text-base text-gray-400 max-w-3/5 overflow-y-auto group-hover:text-cyber-cyan group-hover:opacity-70 transition-colors bg-black/40 backdrop-blur-md border border-white/10 px-4 py-2 mb-3 rounded-xl shadow-2xl">
+                    {description}
+                </p>
+            )
+        }
+        {
+            stack && (
+                <div
+                    class={`flex flex-wrap gap-5 bg-black/40 backdrop-blur-md border w-fit max-w-full border-white/10 px-4 py-2 rounded-xl shadow-2xl`}
+                >
+                    {stack.map((stack) => (
+                        <Image
+                            src={stackSVG[stack]}
+                            alt={stack}
+                            width={128}
+                            height={128}
+                            class="w-fit h-8 lg:h-10 hover:animate-bounce transition-all"
+                        />
+                    ))}
+                </div>
+            )
+        }
     </div>
 </a>

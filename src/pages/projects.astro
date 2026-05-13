@@ -1,0 +1,235 @@
+---
+import ProjectCard from "../components/ProjectCard.astro";
+import Layout from "../layouts/Layout.astro";
+import { Grid, Layers, Code2 } from "lucide-astro";
+
+const projects = [
+    {
+        name: "Colegio San Pedro de Idiomas",
+        imgsrc: "/projects/CSI.png",
+        description:
+            "Web page for Colegio San Pedro de Idiomas, an English language school. Hosted in Google Cloud.",
+        link: "https://csimx.org/",
+        stack: [
+            "Astro",
+            "TypeScript",
+            "TailwindCSS",
+            "Google Cloud Run",
+            "Firebase",
+        ],
+        types: ["Web Page"],
+    },
+    {
+        name: "Medical 365",
+        imgsrc: "/projects/Medical365.png",
+        description:
+            "Health incident and employee status management system that helps manage health reports, track employee status, and generate reports.",
+        link: "https://github.com/oscarvasquez28/Medical-365",
+        stack: ["React", "Node.js", "MongoDB", "Express"],
+        types: ["Web Page"],
+    },
+    {
+        name: "Math Meet",
+        imgsrc: "/projects/MathMeet.png",
+        description:
+            "Video chat application that supports real-time chat and videochat functionality.",
+        link: "https://github.com/PalOntEr/MathMeet",
+        stack: ["C#", "React", "ASP.NET Core", "MS SQL"],
+        types: ["Web Page"],
+    },
+    {
+        name: "Derby Drift",
+        imgsrc: "/projects/DerbyDrift.png",
+        description:
+            "Online multiplayer web game that features two exciting gamemodes that promise fun and competitive play.",
+        link: "https://github.com/oscarvasquez28/Derby-Drift",
+        stack: ["TypeScript", "Node.js", "Three.js", "TailwindCSS"],
+        types: ["Videogame"],
+    },
+    {
+        name: "Unmapped by TrePalDo",
+        imgsrc: "/projects/Unmapped.png",
+        description:
+            "AI-powered infrastructure that maps real-world skills to jobs and opportunities. Configurable by country, enabling governments and organizations to connect youth with economic pathways using local data.",
+        link: "https://github.com/oscarvasquez28/World-Bank-Youth-Summit",
+        stack: ["Python", "FastAPI", "Pandas", "SciKit-Learn"],
+        types: ["Web Page"],
+    },
+    {
+        name: "PhotoHub",
+        imgsrc: "/projects/PhotoHub.png",
+        description:
+            "A desktop app that facilitates the application of image, video and camera filters using the CUDA cores of an NVIDIA graphics card",
+        link: "https://github.com/PalOntEr/PhotoHub",
+        stack: ["C#", "C++", "CUDA"],
+        types: ["Desktop App"],
+    },
+    {
+        name: "Contrincantes",
+        imgsrc: "/projects/Contrincantes.jpg",
+        description:
+            "Capture the flag online multiplayer third person shooter style game with unique visuals and gameplay mechanics",
+        link: "https://www.youtube.com/watch?v=wAEE6pvhMfA",
+        stack: ["Unreal Engine", "C++"],
+        types: ["Videogame"],
+    },
+    {
+        name: "AntDefender",
+        imgsrc: "/projects/AntDefender.png",
+        description: "A 3D tower defense game written in C++ using DirectX11.",
+        link: "https://github.com/PalOntEr/AntDefender",
+        stack: ["C++", "DirectX11"],
+        types: ["Videogame"],
+    },
+];
+
+const allTypes = [...new Set(projects.flatMap((p) => p.types))].sort();
+const allTechs = [...new Set(projects.flatMap((p) => p.stack))].sort();
+
+const projectsByType = allTypes.map((type) => ({
+    title: type,
+    items: projects.filter((p) => p.types.includes(type)),
+}));
+
+const projectsByTech = allTechs.map((tech) => ({
+    title: tech,
+    items: projects.filter((p) => p.stack.includes(tech)),
+}));
+---
+
+<Layout title="PalOntEr | Projects">
+    <section class="flex flex-col px-6 max-w-7xl mx-auto pt-32 pb-20 gap-12">
+        <header
+            class="flex flex-col md:flex-row justify-between items-end gap-8 animate-reveal"
+        >
+            <div class="max-w-2xl">
+                <h1
+                    class="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tighter"
+                >
+                    Project <span class="text-cyber-cyan">Archives</span>
+                </h1>
+                <p
+                    class="text-gray-400 text-lg border-l-2 border-cyber-cyan pl-6"
+                >
+                    A comprehensive library of my technical work, organized for
+                    efficient exploration.
+                </p>
+            </div>
+
+            <!-- View Toggle -->
+            <div
+                class="flex bg-white/5 backdrop-blur-md border border-white/10 p-1 rounded-xl"
+            >
+                <button
+                    id="toggle-type"
+                    class="view-toggle-btn active flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-bold uppercase tracking-widest transition-all"
+                >
+                    <Layers class="w-4 h-4" /> Category
+                </button>
+                <button
+                    id="toggle-tech"
+                    class="view-toggle-btn flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-bold uppercase tracking-widest transition-all"
+                >
+                    <Code2 class="w-4 h-4" /> Technology
+                </button>
+            </div>
+        </header>
+
+        <!-- View Containers -->
+        <div id="view-by-type" class="view-container space-y-24">
+            {
+                projectsByType.map((group, groupIdx) => (
+                    <div
+                        class="animate-reveal"
+                        style={`animation-delay: ${groupIdx * 0.1}s`}
+                    >
+                        <div class="flex items-center gap-4 mb-10">
+                            <h2 class="text-3xl font-black text-white uppercase tracking-tighter">
+                                {group.title}s
+                            </h2>
+                            <div class="h-px flex-grow bg-linear-to-r from-cyber-cyan/50 to-transparent" />
+                            <span class="text-xs font-mono text-cyber-cyan/60">
+                                {group.items.length} Project(s)
+                            </span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                            {group.items.map((project) => (
+                                <ProjectCard {...project} />
+                            ))}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+
+        <div id="view-by-tech" class="view-container hidden space-y-24">
+            {
+                projectsByTech.map((group, groupIdx) => (
+                    <div
+                        class="animate-reveal"
+                        style={`animation-delay: ${groupIdx * 0.05}s`}
+                    >
+                        <div class="flex items-center gap-4 mb-10">
+                            <h2 class="text-3xl font-black text-white uppercase tracking-tighter">
+                                {group.title}
+                            </h2>
+                            <div class="h-px flex-grow bg-linear-to-r from-cyber-teal/50 to-transparent" />
+                            <span class="text-xs font-mono text-cyber-teal/60">
+                                {group.items.length} Project(s)
+                            </span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                            {group.items.map((project) => (
+                                <ProjectCard {...project} />
+                            ))}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </section>
+
+    <style>
+        .view-toggle-btn {
+            color: rgba(255, 255, 255, 0.4);
+        }
+        .view-toggle-btn:hover {
+            color: white;
+        }
+        .view-toggle-btn.active {
+            background-color: var(--color-cyber-cyan);
+            color: black;
+            box-shadow: 0 0 20px rgba(0, 248, 248, 0.3);
+        }
+        #toggle-tech.active {
+            background-color: var(--color-cyber-teal);
+            box-shadow: 0 0 20px rgba(0, 186, 186, 0.3);
+        }
+    </style>
+
+    <script>
+        const btnType = document.getElementById("toggle-type");
+        const btnTech = document.getElementById("toggle-tech");
+        const viewType = document.getElementById("view-by-type");
+        const viewTech = document.getElementById("view-by-tech");
+
+        function switchView(target: string) {
+            if (target === "type") {
+                btnType?.classList.add("active");
+                btnTech?.classList.remove("active");
+                viewType?.classList.remove("hidden");
+                viewTech?.classList.add("hidden");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            } else {
+                btnTech?.classList.add("active");
+                btnType?.classList.remove("active");
+                viewTech?.classList.remove("hidden");
+                viewType?.classList.add("hidden");
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+        }
+
+        btnType?.addEventListener("click", () => switchView("type"));
+        btnTech?.addEventListener("click", () => switchView("tech"));
+    </script>
+</Layout>

@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 interface Props {
     name: string;
     svgIcon: string;
@@ -11,7 +13,13 @@ const { svgIcon, name } = Astro.props;
     <div
         class="p-2 bg-cyber-cyan/10 rounded-lg group-hover:bg-cyber-cyan/20 transition-colors"
     >
-        <img src={svgIcon} alt={name} class="w-5 h-5" />
+        <Image
+            src={svgIcon}
+            alt={name}
+            class="w-5 h-5"
+            width={128}
+            height={128}
+        />
     </div>
     <span class="text-sm font-bold tracking-widest uppercase">{name}</span>
 </div>
