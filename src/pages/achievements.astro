@@ -3,7 +3,6 @@ import Layout from "../layouts/Layout.astro";
 import AchievementCard from "../components/AchievementCard.astro";
 import { Code2, Layers } from "lucide-astro";
 
-
 const achievements = [
     {
         name: "NASA International Space Apps Challenge 2025 - Luxe",
@@ -46,7 +45,6 @@ const achievementsByTech = allTechs.map((tech) => ({
     title: tech,
     items: achievements.filter((p) => p.stack.includes(tech)),
 }));
-
 ---
 
 <Layout title="Achievements | PalOntEr Portfolio">
@@ -141,7 +139,6 @@ const achievementsByTech = allTechs.map((tech) => ({
                 ))
             }
         </div>
-
     </section>
 
     <style>

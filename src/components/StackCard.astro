@@ -38,47 +38,49 @@ const { name, id } = Astro.props;
 
 <script>
     // Close all tooltips when tapping outside
-    document.addEventListener('click', () => {
-        document.querySelectorAll('.stack-tooltip').forEach((t: any) => {
-            t.style.display = '';
+    document.addEventListener("click", () => {
+        document.querySelectorAll(".stack-tooltip").forEach((t: any) => {
+            t.style.display = "";
         });
     });
 
     function setupStackPopups() {
-        const cards = document.querySelectorAll('.stack-card');
+        const cards = document.querySelectorAll(".stack-card");
         cards.forEach((card: any) => {
-            const tooltip = card.querySelector('.stack-tooltip');
+            const tooltip = card.querySelector(".stack-tooltip");
             if (!tooltip) return;
 
             const adjustPosition = () => {
                 const rect = card.getBoundingClientRect();
                 // If card is on the right half of the screen, open tooltip extending backward (right-0)
                 if (rect.left > window.innerWidth / 2) {
-                    tooltip.classList.remove('left-0');
-                    tooltip.classList.add('right-0');
+                    tooltip.classList.remove("left-0");
+                    tooltip.classList.add("right-0");
                 } else {
-                    tooltip.classList.remove('right-0');
-                    tooltip.classList.add('left-0');
+                    tooltip.classList.remove("right-0");
+                    tooltip.classList.add("left-0");
                 }
             };
 
-            card.addEventListener('mouseenter', adjustPosition);
-            
+            card.addEventListener("mouseenter", adjustPosition);
+
             // Toggle on tap/click for mobile
-            card.addEventListener('click', (e: Event) => {
+            card.addEventListener("click", (e: Event) => {
                 e.stopPropagation(); // Prevent document click from immediately closing it
-                
+
                 // Close others
-                document.querySelectorAll('.stack-tooltip').forEach((t: any) => {
-                    if (t !== tooltip) t.style.display = '';
-                });
+                document
+                    .querySelectorAll(".stack-tooltip")
+                    .forEach((t: any) => {
+                        if (t !== tooltip) t.style.display = "";
+                    });
 
                 // Toggle this one
-                if (tooltip.style.display === 'block') {
-                    tooltip.style.display = '';
+                if (tooltip.style.display === "block") {
+                    tooltip.style.display = "";
                 } else {
                     adjustPosition();
-                    tooltip.style.display = 'block';
+                    tooltip.style.display = "block";
                 }
             });
         });

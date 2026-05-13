@@ -122,7 +122,12 @@ const categories = [
                         class="animate-reveal"
                         style={`animation-delay: ${0.1 * (index + 1)}s`}
                     >
-                        <h2 class="text-2xl font-bold text-white mb-8 uppercase tracking-widest flex items-center gap-4" id={category.title.toLowerCase().replace(/\s/g, "-")}>
+                        <h2
+                            class="text-2xl font-bold text-white mb-8 uppercase tracking-widest flex items-center gap-4"
+                            id={category.title
+                                .toLowerCase()
+                                .replace(/\s/g, "-")}
+                        >
                             <span class="text-cyber-cyan">//</span>{" "}
                             {category.title}
                         </h2>
