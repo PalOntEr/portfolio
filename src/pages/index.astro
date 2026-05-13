@@ -4,7 +4,6 @@ import StackCard from "../components/StackCard.astro";
 import Layout from "../layouts/Layout.astro";
 import { ArrowDown, ArrowRight } from "lucide-astro";
 import Prism from "../components/PrismBack.tsx";
-import { stackSVG } from "../utils/stackSVG";
 ---
 
 <Layout title="PalOntEr Main page">
@@ -89,59 +88,51 @@ import { stackSVG } from "../utils/stackSVG";
 			style="animation-delay: 0.4s"
 		>
 			<div class="grid grid-cols-2 md:grid-cols-4 gap-12">
-				<a href="/portfolio/stack#TypeScript">
+				<a href="/portfolio/stack#frontend-&-styling">
 					<StackCard
 						name="TypeScript"
-						svgIcon={stackSVG["TypeScript"]}
 						id="TypeScript"
 					/>
 				</a>
-				<a href="/portfolio/stack#Node.js">
+				<a href="/portfolio/stack#backend-&-frameworks">
 					<StackCard
 						name="Node.js"
-						svgIcon={stackSVG["Node.js"]}
 						id="Node.js"
 					/>
 				</a>
-				<a href="/portfolio/stack#Astro">
+				<a href="/portfolio/stack#backend-&-frameworks">
 					<StackCard
 						name="Astro"
-						svgIcon={stackSVG["Astro"]}
 						id="Astro"
 					/>
 				</a>
-				<a href="/portfolio/stack#TailwindCSS">
+				<a href="/portfolio/stack#frontend-&-styling">
 					<StackCard
 						name="TailwindCSS"
-						svgIcon={stackSVG["TailwindCSS"]}
 						id="TailwindCSS"
 					/>
 				</a>
-				<a href="/portfolio/stack#Python">
+				<a href="/portfolio/stack#languages">
 					<StackCard
 						name="Python"
-						svgIcon={stackSVG["Python"]}
 						id="Python"
 					/>
 				</a>
-				<a href="/portfolio/stack#AWS">
+				<a href="/portfolio/stack#cloud-&-devops">
 					<StackCard
 						name="AWS"
-						svgIcon={stackSVG["AWS"]}
 						id="AWS"
 					/>
 				</a>
-				<a href="/portfolio/stack#Docker">
+				<a href="/portfolio/stack#cloud-&-devops">
 					<StackCard
 						name="Docker"
-						svgIcon={stackSVG["Docker"]}
 						id="Docker"
 					/>
 				</a>
-				<a href="/portfolio/stack#MS SQL">
+				<a href="/portfolio/stack#databases">
 					<StackCard
 						name="MS SQL"
-						svgIcon={stackSVG["MS SQL"]}
 						id="MS SQL"
 					/>
 				</a>

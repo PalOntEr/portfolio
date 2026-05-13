@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import { stackSVG } from "../utils/stackSVG";
+import { stackSVG, stackEnum } from "../utils/stackSVG";
 
 interface Props {
     name: string;
@@ -55,7 +55,7 @@ const { name, imgsrc, link, description, stack } = Astro.props;
                 >
                     {stack.map((stack) => (
                         <Image
-                            src={stackSVG[stack]}
+                            src={stackSVG[stack][stackEnum.SVG]}
                             alt={stack}
                             width={128}
                             height={128}

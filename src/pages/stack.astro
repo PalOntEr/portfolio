@@ -1,148 +1,99 @@
 ---
 import StackCard from "../components/StackCard.astro";
 import Layout from "../layouts/Layout.astro";
-import { stackSVG } from "../utils/stackSVG";
 
 const categories = [
     {
         title: "Languages",
         techs: [
-            {
-                name: "JavaScript",
-                icon: stackSVG["JavaScript"],
-            },
-            {
-                name: "TypeScript",
-                icon: stackSVG["TypeScript"],
-            },
-            { name: "Python", icon: stackSVG["Python"] },
-            { name: "C#", icon: stackSVG["C#"] },
-            { name: "C++", icon: stackSVG["C++"] },
-            { name: "Swift", icon: stackSVG["Swift"] },
-            { name: "HTML5", icon: stackSVG["HTML5"] },
+            { name: "JavaScript" },
+            { name: "TypeScript" },
+            { name: "Python" },
+            { name: "C#" },
+            { name: "C++" },
+            { name: "Swift" },
+            { name: "HTML5" },
         ],
     },
     {
         title: "Frontend & Styling",
         techs: [
-            { name: "React", icon: stackSVG["React"] },
-            {
-                name: "TailwindCSS",
-                icon: stackSVG["TailwindCSS"],
-            },
-            { name: "Three.js", icon: stackSVG["Three.js"] },
+            { name: "React" },
+            { name: "TailwindCSS" },
+            { name: "Three.js" },
         ],
     },
     {
         title: "Backend & Frameworks",
         techs: [
-            { name: "Astro", icon: stackSVG["Astro"] },
-            { name: "Node.js", icon: stackSVG["Node.js"] },
-            { name: "Express", icon: stackSVG["Express"] },
-            { name: "FastAPI", icon: stackSVG["FastAPI"] },
-            { name: "Flask", icon: stackSVG["Flask"] },
-            {
-                name: "ASP.NET Core",
-                icon: stackSVG["ASP.NET Core"],
-            },
+            { name: "Astro" },
+            { name: "Node.js" },
+            { name: "Express" },
+            { name: "FastAPI" },
+            { name: "Flask" },
+            { name: "ASP.NET Core" },
         ],
     },
     {
         title: "Databases",
         techs: [
-            { name: "MongoDB", icon: stackSVG["MongoDB"] },
-            { name: "MySQL", icon: stackSVG["MySQL"] },
-            {
-                name: "MS SQL Server",
-                icon: stackSVG["MS SQL Server"],
-            },
-            { name: "SQLite", icon: stackSVG["SQLite"] },
+            { name: "MongoDB" },
+            { name: "MySQL" },
+            { name: "MS SQL Server" },
+            { name: "SQLite" },
         ],
     },
     {
         title: "Data Science & AI",
-        techs: [
-            { name: "Pandas", icon: stackSVG["Pandas"] },
-            {
-                name: "SciKit-Learn",
-                icon: stackSVG["SciKit-Learn"],
-            },
-        ],
+        techs: [{ name: "Pandas" }, { name: "SciKit-Learn" }],
     },
     {
         title: "Cloud & DevOps",
         techs: [
-            { name: "Docker", icon: stackSVG["Docker"] },
-            {
-                name: "AWS",
-                icon: stackSVG["AWS"],
-            },
-            {
-                name: "Google Cloud",
-                icon: stackSVG["Google Cloud"],
-            },
-            {
-                name: "Firebase",
-                icon: stackSVG["Firebase"],
-            },
+            { name: "Docker" },
+            { name: "AWS" },
+            { name: "Google Cloud" },
+            { name: "Firebase" },
         ],
     },
     {
         title: "Tools & Design",
         techs: [
-            { name: "Figma", icon: stackSVG["Figma"] },
-            { name: "Postman", icon: stackSVG["Postman"] },
-            { name: "Swagger", icon: stackSVG["Swagger"] },
-            { name: "NPM", icon: stackSVG["NPM"] },
+            { name: "Figma" },
+            { name: "Postman" },
+            { name: "Swagger" },
+            { name: "NPM" },
         ],
     },
     {
         title: "Version Control Systems",
         techs: [
-            { name: "GitHub", icon: stackSVG["GitHub"] },
-            { name: "Git", icon: stackSVG["Git"] },
-            {
-                name: "Bitbucket",
-                icon: stackSVG["Bitbucket"],
-            },
-            {
-                name: "SourceTree",
-                icon: stackSVG["SourceTree"],
-            },
+            { name: "GitHub" },
+            { name: "Git" },
+            { name: "Bitbucket" },
+            { name: "SourceTree" },
         ],
     },
     {
         title: "Development Environments",
         techs: [
-            { name: "VS Code", icon: stackSVG["VS Code"] },
-            {
-                name: "Visual Studio",
-                icon: stackSVG["Visual Studio"],
-            },
-            { name: "Xcode", icon: stackSVG["Xcode"] },
+            { name: "VS Code" },
+            { name: "Visual Studio" },
+            { name: "Xcode" },
         ],
     },
     {
         title: "Systems & Engines",
         techs: [
-            {
-                name: "Unreal Engine",
-                icon: stackSVG["Unreal Engine"],
-            },
-            { name: "Unity", icon: stackSVG["Unity"] },
-            {
-                name: "DirectX 11",
-                icon: stackSVG["DirectX 11"],
-            },
-            { name: "CUDA", icon: stackSVG["CUDA"] },
-            { name: "OpenGL", icon: stackSVG["OpenGL"] },
-            { name: "Linux", icon: stackSVG["Linux"] },
-            { name: "Ubuntu", icon: stackSVG["Ubuntu"] },
-            {
-                name: "Windows",
-                icon: stackSVG["Windows"],
-            },
-            { name: "Arduino", icon: stackSVG["Arduino"] },
+            { name: "Unreal Engine" },
+            { name: "Unity" },
+            { name: "DirectX 11" },
+            { name: "CUDA" },
+            { name: "OpenGL" },
+            { name: "Linux" },
+            { name: "Ubuntu" },
+            { name: "Windows" },
+            { name: "Arduino" },
         ],
     },
 ];
@@ -171,17 +122,13 @@ const categories = [
                         class="animate-reveal"
                         style={`animation-delay: ${0.1 * (index + 1)}s`}
                     >
-                        <h2 class="text-2xl font-bold text-white mb-8 uppercase tracking-widest flex items-center gap-4">
+                        <h2 class="text-2xl font-bold text-white mb-8 uppercase tracking-widest flex items-center gap-4" id={category.title.toLowerCase().replace(/\s/g, "-")}>
                             <span class="text-cyber-cyan">//</span>{" "}
                             {category.title}
                         </h2>
                         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                             {category.techs.map((tech) => (
-                                <StackCard
-                                    name={tech.name}
-                                    svgIcon={tech.icon}
-                                    id={tech.name}
-                                />
+                                <StackCard name={tech.name} id={tech.name} />
                             ))}
                         </div>
                     </div>
