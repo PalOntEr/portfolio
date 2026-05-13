@@ -1,6 +1,7 @@
 ---
 import StackCard from "../components/StackCard.astro";
 import Layout from "../layouts/Layout.astro";
+import { stackSVG } from "../utils/stackSVG";
 
 const categories = [
     {
@@ -8,117 +9,117 @@ const categories = [
         techs: [
             {
                 name: "JavaScript",
-                icon: "/portfolio/stack/javascript-original.svg",
+                icon: stackSVG["JavaScript"],
             },
             {
                 name: "TypeScript",
-                icon: "/portfolio/stack/typescript-original.svg",
+                icon: stackSVG["TypeScript"],
             },
-            { name: "Python", icon: "/portfolio/stack/python-original.svg" },
-            { name: "C#", icon: "/portfolio/stack/csharp-original.svg" },
-            { name: "C++", icon: "/portfolio/stack/cplusplus-original.svg" },
-            { name: "Swift", icon: "/portfolio/stack/swift-original.svg" },
-            { name: "HTML5", icon: "/portfolio/stack/html5-original.svg" },
+            { name: "Python", icon: stackSVG["Python"] },
+            { name: "C#", icon: stackSVG["C#"] },
+            { name: "C++", icon: stackSVG["C++"] },
+            { name: "Swift", icon: stackSVG["Swift"] },
+            { name: "HTML5", icon: stackSVG["HTML5"] },
         ],
     },
     {
         title: "Frontend & Styling",
         techs: [
-            { name: "React", icon: "/portfolio/stack/react-original.svg" },
+            { name: "React", icon: stackSVG["React"] },
             {
                 name: "TailwindCSS",
-                icon: "/portfolio/stack/tailwindcss-original.svg",
+                icon: stackSVG["TailwindCSS"],
             },
-            { name: "Three.js", icon: "/portfolio/stack/threejs-original.svg" },
+            { name: "Three.js", icon: stackSVG["Three.js"] },
         ],
     },
     {
         title: "Backend & Frameworks",
         techs: [
-            { name: "Astro", icon: "/portfolio/stack/astro-original.svg" },
-            { name: "Node.js", icon: "/portfolio/stack/nodejs-original.svg" },
-            { name: "Express", icon: "/portfolio/stack/express-original.svg" },
-            { name: "FastAPI", icon: "/portfolio/stack/fastapi-original.svg" },
-            { name: "Flask", icon: "/portfolio/stack/flask-original.svg" },
+            { name: "Astro", icon: stackSVG["Astro"] },
+            { name: "Node.js", icon: stackSVG["Node.js"] },
+            { name: "Express", icon: stackSVG["Express"] },
+            { name: "FastAPI", icon: stackSVG["FastAPI"] },
+            { name: "Flask", icon: stackSVG["Flask"] },
             {
                 name: "ASP.NET Core",
-                icon: "/portfolio/stack/dotnetcore-original.svg",
+                icon: stackSVG["ASP.NET Core"],
             },
         ],
     },
     {
         title: "Databases",
         techs: [
-            { name: "MongoDB", icon: "/portfolio/stack/mongodb-original.svg" },
-            { name: "MySQL", icon: "/portfolio/stack/mysql-original.svg" },
+            { name: "MongoDB", icon: stackSVG["MongoDB"] },
+            { name: "MySQL", icon: stackSVG["MySQL"] },
             {
                 name: "MS SQL Server",
-                icon: "/portfolio/stack/microsoftsqlserver-original.svg",
+                icon: stackSVG["MS SQL Server"],
             },
-            { name: "SQLite", icon: "/portfolio/stack/sqlite-original.svg" },
+            { name: "SQLite", icon: stackSVG["SQLite"] },
         ],
     },
     {
         title: "Data Science & AI",
         techs: [
-            { name: "Pandas", icon: "/portfolio/stack/pandas-original.svg" },
+            { name: "Pandas", icon: stackSVG["Pandas"] },
             {
                 name: "SciKit-Learn",
-                icon: "/portfolio/stack/scikitlearn-original.svg",
+                icon: stackSVG["SciKit-Learn"],
             },
         ],
     },
     {
         title: "Cloud & DevOps",
         techs: [
-            { name: "Docker", icon: "/portfolio/stack/docker-plain.svg" },
+            { name: "Docker", icon: stackSVG["Docker"] },
             {
                 name: "AWS",
-                icon: "/portfolio/stack/amazonwebservices-original-wordmark.svg",
+                icon: stackSVG["AWS"],
             },
             {
                 name: "Google Cloud",
-                icon: "/portfolio/stack/googlecloud-original.svg",
+                icon: stackSVG["Google Cloud"],
             },
             {
                 name: "Firebase",
-                icon: "/portfolio/stack/firebase-original.svg",
+                icon: stackSVG["Firebase"],
             },
         ],
     },
     {
         title: "Tools & Design",
         techs: [
-            { name: "Figma", icon: "/portfolio/stack/figma-original.svg" },
-            { name: "Postman", icon: "/portfolio/stack/postman-original.svg" },
-            { name: "Swagger", icon: "/portfolio/stack/swagger-original.svg" },
-            { name: "NPM", icon: "/portfolio/stack/npm-original.svg" },
+            { name: "Figma", icon: stackSVG["Figma"] },
+            { name: "Postman", icon: stackSVG["Postman"] },
+            { name: "Swagger", icon: stackSVG["Swagger"] },
+            { name: "NPM", icon: stackSVG["NPM"] },
         ],
     },
     {
         title: "Version Control Systems",
         techs: [
-            { name: "GitHub", icon: "/portfolio/stack/github-original.svg" },
-            { name: "Git", icon: "/portfolio/stack/git-original.svg" },
+            { name: "GitHub", icon: stackSVG["GitHub"] },
+            { name: "Git", icon: stackSVG["Git"] },
             {
                 name: "Bitbucket",
-                icon: "/portfolio/stack/bitbucket-original.svg",
+                icon: stackSVG["Bitbucket"],
             },
             {
                 name: "SourceTree",
-                icon: "/portfolio/stack/sourcetree-original.svg",
+                icon: stackSVG["SourceTree"],
             },
         ],
     },
     {
         title: "Development Environments",
         techs: [
-            { name: "VS Code", icon: "/portfolio/stack/vscode-original.svg" },
+            { name: "VS Code", icon: stackSVG["VS Code"] },
             {
                 name: "Visual Studio",
-                icon: "/portfolio/stack/visualstudio-original.svg",
+                icon: stackSVG["Visual Studio"],
             },
-            { name: "Xcode", icon: "/portfolio/stack/xcode-original.svg" },
+            { name: "Xcode", icon: stackSVG["Xcode"] },
         ],
     },
     {
@@ -126,22 +127,22 @@ const categories = [
         techs: [
             {
                 name: "Unreal Engine",
-                icon: "/portfolio/stack/unrealengine-original.svg",
+                icon: stackSVG["Unreal Engine"],
             },
-            { name: "Unity", icon: "/portfolio/stack/unity-original.svg" },
+            { name: "Unity", icon: stackSVG["Unity"] },
             {
                 name: "DirectX 11",
-                icon: "/portfolio/stack/directx-original.svg",
+                icon: stackSVG["DirectX 11"],
             },
-            { name: "CUDA", icon: "/portfolio/stack/cuda-original.svg" },
-            { name: "OpenGL", icon: "/portfolio/stack/opengl-plain.svg" },
-            { name: "Linux", icon: "/portfolio/stack/linux-original.svg" },
-            { name: "Ubuntu", icon: "/portfolio/stack/ubuntu-original.svg" },
+            { name: "CUDA", icon: stackSVG["CUDA"] },
+            { name: "OpenGL", icon: stackSVG["OpenGL"] },
+            { name: "Linux", icon: stackSVG["Linux"] },
+            { name: "Ubuntu", icon: stackSVG["Ubuntu"] },
             {
                 name: "Windows",
-                icon: "/portfolio/stack/windows11-original.svg",
+                icon: stackSVG["Windows"],
             },
-            { name: "Arduino", icon: "/portfolio/stack/arduino-original.svg" },
+            { name: "Arduino", icon: stackSVG["Arduino"] },
         ],
     },
 ];
