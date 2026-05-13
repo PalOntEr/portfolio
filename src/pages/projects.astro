@@ -208,7 +208,7 @@ const projectsByTech = allTechs.map((tech) => ({
     </style>
 
     <script>
-        function setupProjectToggle() {
+        document.addEventListener("astro:page-load", () => {
             const btnType = document.getElementById("toggle-type");
             const btnTech = document.getElementById("toggle-tech");
             const viewType = document.getElementById("view-by-type");
@@ -232,8 +232,6 @@ const projectsByTech = allTechs.map((tech) => ({
 
             btnType?.addEventListener("click", () => switchView("type"));
             btnTech?.addEventListener("click", () => switchView("tech"));
-        }
-
-        document.addEventListener("astro:page-load", setupProjectToggle);
+        });
     </script>
 </Layout>

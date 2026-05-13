@@ -89,16 +89,19 @@
 </header>
 
 <script>
-  function setupMenu() {
+  document.addEventListener("astro:page-load", () => {
     const btn = document.getElementById("mobile-menu-btn");
     const menu = document.getElementById("mobile-menu");
 
-    btn?.addEventListener("click", () => {
-      menu?.classList.toggle("hidden");
-      menu?.classList.toggle("opacity-0");
-    });
-  }
-
-  // astro:page-load fires on initial page load AND after every navigation
-  document.addEventListener("astro:page-load", setupMenu);
+    if (btn && menu) {
+      // Using onclick ensures we don't accidentally attach multiple listeners across navigations
+      btn.onclick = () => {
+        menu.classList.toggle("hidden");
+        // A tiny timeout ensures the browser registers the removal of 'hidden' before transitioning opacity
+        setTimeout(() => {
+          menu.classList.toggle("opacity-0");
+        }, 10);
+      };
+    }
+  });
 </script>
