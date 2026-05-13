@@ -15,6 +15,7 @@ const { svgIcon, name, id } = Astro.props;
         class="p-2 bg-cyber-cyan/10 rounded-lg group-hover:bg-cyber-cyan/20 transition-colors"
     >
         <Image
+            loading="lazy"
             src={svgIcon}
             alt={name}
             id={id}
