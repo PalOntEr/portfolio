@@ -208,28 +208,32 @@ const projectsByTech = allTechs.map((tech) => ({
     </style>
 
     <script>
-        const btnType = document.getElementById("toggle-type");
-        const btnTech = document.getElementById("toggle-tech");
-        const viewType = document.getElementById("view-by-type");
-        const viewTech = document.getElementById("view-by-tech");
+        function setupProjectToggle() {
+            const btnType = document.getElementById("toggle-type");
+            const btnTech = document.getElementById("toggle-tech");
+            const viewType = document.getElementById("view-by-type");
+            const viewTech = document.getElementById("view-by-tech");
 
-        function switchView(target: string) {
-            if (target === "type") {
-                btnType?.classList.add("active");
-                btnTech?.classList.remove("active");
-                viewType?.classList.remove("hidden");
-                viewTech?.classList.add("hidden");
-                window.scrollTo({ top: 0, behavior: "smooth" });
-            } else {
-                btnTech?.classList.add("active");
-                btnType?.classList.remove("active");
-                viewTech?.classList.remove("hidden");
-                viewType?.classList.add("hidden");
-                window.scrollTo({ top: 0, behavior: "smooth" });
+            function switchView(target: string) {
+                if (target === "type") {
+                    btnType?.classList.add("active");
+                    btnTech?.classList.remove("active");
+                    viewType?.classList.remove("hidden");
+                    viewTech?.classList.add("hidden");
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                } else {
+                    btnTech?.classList.add("active");
+                    btnType?.classList.remove("active");
+                    viewTech?.classList.remove("hidden");
+                    viewType?.classList.add("hidden");
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                }
             }
+
+            btnType?.addEventListener("click", () => switchView("type"));
+            btnTech?.addEventListener("click", () => switchView("tech"));
         }
 
-        btnType?.addEventListener("click", () => switchView("type"));
-        btnTech?.addEventListener("click", () => switchView("tech"));
+        document.addEventListener("astro:page-load", setupProjectToggle);
     </script>
 </Layout>

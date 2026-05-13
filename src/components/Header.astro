@@ -1,7 +1,3 @@
----
-import { Cpu } from "lucide-astro";
----
-
 <header class="fixed top-0 left-0 w-full z-50 px-6 py-4">
   <nav
     class="max-w-7xl mx-auto flex items-center justify-between bg-black/40 backdrop-blur-md border border-cyber-border rounded-2xl px-6 py-3 shadow-[0_0_20px_rgba(0,248,248,0.1)]"
@@ -83,13 +79,18 @@ import { Cpu } from "lucide-astro";
 </header>
 
 <script>
-  const btn = document.getElementById("mobile-menu-btn");
-  const menu = document.getElementById("mobile-menu");
+  function setupMenu() {
+    const btn = document.getElementById("mobile-menu-btn");
+    const menu = document.getElementById("mobile-menu");
 
-  btn?.addEventListener("click", () => {
-    menu?.classList.toggle("hidden");
-    setTimeout(() => {
-      menu?.classList.toggle("opacity-0");
-    }, 10);
-  });
+    btn?.addEventListener("click", () => {
+      menu?.classList.toggle("hidden");
+      setTimeout(() => {
+        menu?.classList.toggle("opacity-0");
+      }, 10);
+    });
+  }
+
+  // astro:page-load fires on initial page load AND after every navigation
+  document.addEventListener("astro:page-load", setupMenu);
 </script>
