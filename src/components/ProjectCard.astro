@@ -1,16 +1,18 @@
 ---
 import { Image } from "astro:assets";
 import { stackSVG, stackEnum } from "../utils/stackSVG";
+import type { ImageMetadata } from "astro";
 
 interface Props {
     name: string;
-    imgsrc: string;
+    imgsrc: string | ImageMetadata;
     link?: string;
     description?: string;
     stack?: string[];
 }
 
 const { name, imgsrc, link, description, stack } = Astro.props;
+const srcAsAny = imgsrc as any;
 ---
 
 <a
@@ -22,10 +24,10 @@ const { name, imgsrc, link, description, stack } = Astro.props;
     <!-- Background Image -->
     <Image
         loading="lazy"
-        src={imgsrc}
+        src={srcAsAny}
         alt={name}
-        width={640}
-        height={480}
+        width={594}
+        height={333}
         class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-70 transition-all duration-700 group-hover:scale-110"
     />
 
@@ -53,15 +55,18 @@ const { name, imgsrc, link, description, stack } = Astro.props;
                 <div
                     class={`flex flex-wrap gap-5 bg-black/40 backdrop-blur-md border w-fit max-w-full border-white/10 px-4 py-2 rounded-xl shadow-2xl`}
                 >
-                    {stack.map((stack) => (
-                        <Image
-                            src={stackSVG[stack][stackEnum.SVG]}
-                            alt={stack}
-                            width={128}
-                            height={128}
-                            class="w-fit h-8 lg:h-10 hover:animate-bounce transition-all"
-                        />
-                    ))}
+                    {stack.map((stack) => {
+                        const stackSrcAsAny = stackSVG[stack][stackEnum.SVG] as any;
+                        return (
+                            <Image
+                                src={stackSrcAsAny}
+                                alt={stack}
+                                width={80}
+                                height={80}
+                                class="w-fit h-8 lg:h-10 hover:animate-bounce transition-all"
+                            />
+                        )
+                    })}
                 </div>
             )
         }

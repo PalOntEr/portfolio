@@ -4,6 +4,11 @@ import StackCard from "../components/StackCard.astro";
 import Layout from "../layouts/Layout.astro";
 import { ArrowDown, ArrowRight } from "lucide-astro";
 import Prism from "../components/PrismBack.tsx";
+
+import csiProject from "../assets/projects/CSI.png";
+import photohubProject from "../assets/projects/PhotoHub.png";
+import medical365Project from "../assets/projects/Medical365.png";
+import derbydriftProject from "../assets/projects/DerbyDrift.png";
 ---
 
 <Layout title="PalOntEr Main page">
@@ -151,7 +156,7 @@ import Prism from "../components/PrismBack.tsx";
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
 			<ProjectCard
 				name="Colegio San Pedro de Idiomas"
-				imgsrc="/portfolio/projects/CSI.png"
+				imgsrc={csiProject}
 				description="Web page for Colegio San Pedro de Idiomas, an English language school. Hosted in Google Cloud."
 				link="https://csimx.org/"
 				stack={[
@@ -164,21 +169,21 @@ import Prism from "../components/PrismBack.tsx";
 			/>
 			<ProjectCard
 				name="PhotoHub"
-				imgsrc="/portfolio/projects/PhotoHub.png"
+				imgsrc={photohubProject}
 				description="A desktop app that facilitates the application of image, video and camera filters using the CUDA cores of an NVIDIA graphics card"
 				link="https://github.com/PalOntEr/PhotoHub"
 				stack={["C#", "C++", "CUDA"]}
 			/>
 			<ProjectCard
 				name="Medical 365"
-				imgsrc="/portfolio/projects/Medical365.png"
+				imgsrc={medical365Project}
 				description="Health incident and employee status management system that helps manage health reports, track employee status, and generate reports."
 				link="https://github.com/oscarvasquez28/Medical-365"
 				stack={["React", "Node.js", "MongoDB", "Express"]}
 			/>
 			<ProjectCard
 				name="Derby Drift"
-				imgsrc="/portfolio/projects/DerbyDrift.png"
+				imgsrc={derbydriftProject}
 				description="Online multiplayer web game that features two exciting gamemodes that promise fun and competitive play."
 				link="https://github.com/oscarvasquez28/Derby-Drift"
 				stack={["TypeScript", "TailwindCSS", "Node.js", "Express", "Three.js"]}

@@ -8,6 +8,7 @@ interface Props {
 }
 
 const { name, id } = Astro.props;
+const srcAsAny = stackSVG[name][stackEnum.SVG] as any;
 ---
 
 <div class="relative flex flex-col gap-3 group stack-card">
@@ -17,12 +18,12 @@ const { name, id } = Astro.props;
         >
             <Image
                 loading="lazy"
-                src={stackSVG[name][stackEnum.SVG]}
+                src={srcAsAny}
                 alt={name}
                 id={id}
                 class="w-5 h-5"
-                width={128}
-                height={128}
+                width={20}
+                height={20}
             />
         </div>
         <span class="text-sm font-bold tracking-widest uppercase select-none"
