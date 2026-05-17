@@ -1,102 +1,27 @@
 ---
 import StackCard from "../components/StackCard.astro";
 import Layout from "../layouts/Layout.astro";
+import { stackArray } from "../utils/stack";
 
-const categories = [
-    {
-        title: "Languages",
-        techs: [
-            { name: "JavaScript" },
-            { name: "TypeScript" },
-            { name: "Python" },
-            { name: "C#" },
-            { name: "C++" },
-            { name: "Swift" },
-            { name: "HTML5" },
-        ],
-    },
-    {
-        title: "Frontend & Styling",
-        techs: [
-            { name: "React" },
-            { name: "TailwindCSS" },
-            { name: "Three.js" },
-        ],
-    },
-    {
-        title: "Backend & Frameworks",
-        techs: [
-            { name: "Astro" },
-            { name: "Node.js" },
-            { name: "Express" },
-            { name: "FastAPI" },
-            { name: "Flask" },
-            { name: "ASP.NET Core" },
-        ],
-    },
-    {
-        title: "Databases",
-        techs: [
-            { name: "MongoDB" },
-            { name: "MySQL" },
-            { name: "MS SQL Server" },
-            { name: "SQLite" },
-        ],
-    },
-    {
-        title: "Data Science & AI",
-        techs: [{ name: "Pandas" }, { name: "SciKit-Learn" }],
-    },
-    {
-        title: "Cloud & DevOps",
-        techs: [
-            { name: "Docker" },
-            { name: "AWS" },
-            { name: "Google Cloud" },
-            { name: "Firebase" },
-        ],
-    },
-    {
-        title: "Tools & Design",
-        techs: [
-            { name: "Figma" },
-            { name: "Postman" },
-            { name: "Swagger" },
-            { name: "NPM" },
-        ],
-    },
-    {
-        title: "Version Control Systems",
-        techs: [
-            { name: "GitHub" },
-            { name: "Git" },
-            { name: "Bitbucket" },
-            { name: "SourceTree" },
-        ],
-    },
-    {
-        title: "Development Environments",
-        techs: [
-            { name: "VS Code" },
-            { name: "Visual Studio" },
-            { name: "Xcode" },
-        ],
-    },
-    {
-        title: "Systems & Engines",
-        techs: [
-            { name: "Unreal Engine" },
-            { name: "Unity" },
-            { name: "DirectX 11" },
-            { name: "CUDA" },
-            { name: "OpenGL" },
-            { name: "Linux" },
-            { name: "Ubuntu" },
-            { name: "Windows" },
-            { name: "Arduino" },
-        ],
-    },
+const categoryOrder = [
+    "Languages",
+    "Frontend & Styling",
+    "Backend & Frameworks",
+    "Databases",
+    "Data Science & AI",
+    "Cloud & DevOps",
+    "Tools & Design",
+    "Version Control Systems",
+    "Development Environments",
+    "Systems & Engines",
 ];
+
+const categories = categoryOrder.map((title) => ({
+    title,
+    techs: Object.entries(stackArray)
+        .filter(([_, value]) => value[2] === title)
+        .map(([name]) => ({ name })),
+}));
 ---
 
 <Layout title="PalOntEr | Technical Stack">
@@ -111,7 +36,9 @@ const categories = [
                 class="text-gray-400 max-w-2xl text-lg border-l-2 border-cyber-cyan pl-6"
             >
                 A comprehensive directory of the technologies, tools, and
-                systems I have used throughout my journey.
+                systems I have used throughout my journey. 
+                <br />
+                <span class="text-cyber-cyan opacity-80">Hover </span> over each <span class="text-cyber-cyan opacity-80">item</span> to see a brief <span class="text-cyber-cyan opacity-80">description</span>.
             </p>
         </header>
 

@@ -1,39 +1,45 @@
 ---
 import { Image } from "astro:assets";
-import { stackSVG, stackEnum } from "../utils/stackSVG";
+import { stackArray, stackEnum } from "../utils/stack";
 
 interface Props {
     name: string;
     id: string;
+    showName?: boolean;
+    iconOnly?: boolean;
 }
 
-const { name, id } = Astro.props;
-const srcAsAny = stackSVG[name][stackEnum.SVG] as any;
+const { name, id, showName = true, iconOnly = false } = Astro.props;
+const srcAsAny = stackArray[name][stackEnum.SVG] as any;
 ---
 
-<div class="relative flex flex-col gap-3 group stack-card">
+<div class="relative flex flex-col gap-3 group/stack stack-card">
     <div class="flex items-center gap-3 cursor-pointer">
         <div
-            class="p-2 bg-cyber-cyan/10 min-w-fit rounded-lg group-hover:bg-cyber-cyan/20 transition-colors"
+            class={!iconOnly ? "p-2 bg-cyber-cyan/10 min-w-fit rounded-lg group-hover/stack:bg-cyber-cyan/20 transition-colors"
+                     : ""}
         >
             <Image
                 loading="lazy"
                 src={srcAsAny}
                 alt={name}
                 id={id}
-                class="w-5 h-5"
+                class={!iconOnly ? "w-5 h-5" : "w-fit h-8 lg:h-10 hover:animate-bounce"}
                 width={20}
                 height={20}
             />
         </div>
-        <span class="text-sm font-bold tracking-widest uppercase select-none"
-            >{name}</span
-        >
+        {!iconOnly && showName && (
+            <span class="text-sm font-bold tracking-widest uppercase select-none">
+            {name}
+            </span>
+        )}
     </div>
     <span
-        class="stack-tooltip absolute top-full left-0 mt-2 z-50 hidden group-hover:block w-max max-w-75 text-xs text-cyber-cyan bg-black/70 backdrop-blur-xl border border-cyber-border rounded-xl p-3 shadow-[0_0_30px_rgba(0,248,248,0.2)] pointer-events-none"
+        class={!iconOnly ? "stack-tooltip absolute top-full left-0 mt-2 z-50 hidden group-hover/stack:block w-max max-w-75 text-xs text-cyber-cyan bg-black/70 backdrop-blur-xl border border-cyber-border rounded-xl p-3 shadow-[0_0_30px_rgba(0,248,248,0.2)] pointer-events-none"
+                     : "hidden"}
     >
-        {stackSVG[name][stackEnum.Description]}
+        {stackArray[name][stackEnum.Description]}
     </span>
 </div>
 
