@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import StackCard from "./StackCard.astro";
 import type { ImageMetadata } from "astro";
-import { stackArray, stackEnum } from "../utils/stack";
+import { stackData } from "../data/stack";
 
 interface Props {
     name: string;
@@ -62,14 +62,14 @@ const srcAsAny = imgsrc as any;
                 <div
                     class={`flex flex-wrap gap-5 bg-black/40 backdrop-blur-md border w-fit max-w-full border-white/10 px-4 py-2 rounded-xl shadow-2xl`}
                 >
-                    {stack.map((stack) => (
+                    {stack.map((stackName) => (
                         <a
-                            href={`/portfolio/stack#${stackArray[stack][stackEnum.Category]}`
+                            href={`/portfolio/stack#${stackData.find(t => t.name === stackName)?.category}`
                                 .toLowerCase()
                                 .replace(/\s/g, "-")}
                             class="block text-sm lg:text-base text-gray-300 group-hover/project:text-cyber-cyan transition-colors"
                         >
-                            <StackCard name={stack} id={stack} showName={false} iconOnly={true} />
+                            <StackCard name={stackName} id={stackName} showName={false} iconOnly={true} />
                         </a>
                     ))}
                 </div>

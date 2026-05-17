@@ -1,7 +1,7 @@
 ---
 import StackCard from "../components/StackCard.astro";
 import Layout from "../layouts/Layout.astro";
-import { stackArray } from "../utils/stack";
+import { stackData } from "../data/stack";
 
 const categoryOrder = [
     "Languages",
@@ -18,9 +18,9 @@ const categoryOrder = [
 
 const categories = categoryOrder.map((title) => ({
     title,
-    techs: Object.entries(stackArray)
-        .filter(([_, value]) => value[2] === title)
-        .map(([name]) => ({ name })),
+    techs: stackData
+        .filter((tech) => tech.category === title)
+        .map((tech) => ({ name: tech.name })),
 }));
 ---
 

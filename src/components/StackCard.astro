@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import { stackArray, stackEnum } from "../utils/stack";
+import { stackData } from "../data/stack";
 
 interface Props {
     name: string;
@@ -10,7 +10,8 @@ interface Props {
 }
 
 const { name, id, showName = true, iconOnly = false } = Astro.props;
-const srcAsAny = stackArray[name][stackEnum.SVG] as any;
+const tech = stackData.find((t) => t.name === name);
+const srcAsAny = tech?.imgsrc as any;
 ---
 
 <div class="relative flex flex-col gap-3 group/stack stack-card">
@@ -39,7 +40,7 @@ const srcAsAny = stackArray[name][stackEnum.SVG] as any;
         class={!iconOnly ? "stack-tooltip absolute top-full left-0 mt-2 z-50 hidden group-hover/stack:block w-max max-w-75 text-xs text-cyber-cyan bg-black/70 backdrop-blur-xl border border-cyber-border rounded-xl p-3 shadow-[0_0_30px_rgba(0,248,248,0.2)] pointer-events-none"
                      : "hidden"}
     >
-        {stackArray[name][stackEnum.Description]}
+        {tech?.description}
     </span>
 </div>
 
