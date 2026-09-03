@@ -1,71 +1,16 @@
 ---
-import StackCard from "../components/StackCard.astro";
 import Layout from "../layouts/Layout.astro";
-import { stackData } from "../data/stack";
-
-const categoryOrder = [
-    "Languages",
-    "Frontend & Styling",
-    "Backend & Frameworks",
-    "Databases",
-    "Data Science & AI",
-    "Cloud & DevOps",
-    "Tools & Design",
-    "Version Control Systems",
-    "Development Environments",
-    "Systems & Engines",
-];
-
-const categories = categoryOrder.map((title) => ({
-    title,
-    techs: stackData
-        .filter((tech) => tech.category === title)
-        .map((tech) => ({ name: tech.name })),
-}));
 ---
 
-<Layout title="PalOntEr | Technical Stack">
-    <section class="max-w-7xl mx-auto px-6 py-24 md:py-32">
-        <header class="mb-16 animate-reveal">
-            <h1
-                class="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tighter"
-            >
-                Technical <span class="text-cyber-cyan">Stack</span>
-            </h1>
-            <p
-                class="text-gray-400 max-w-2xl text-lg border-l-2 border-cyber-cyan pl-6"
-            >
-                A comprehensive directory of the technologies, tools, and
-                systems I have used throughout my journey. 
-                <br />
-                <span class="text-cyber-cyan opacity-80">Hover </span> over each <span class="text-cyber-cyan opacity-80">item</span> to see a brief <span class="text-cyber-cyan opacity-80">description</span>.
-            </p>
-        </header>
-
-        <div class="space-y-20">
-            {
-                categories.map((category, index) => (
-                    <div
-                        class="animate-reveal"
-                        style={`animation-delay: ${0.1 * (index + 1)}s`}
-                    >
-                        <h2
-                            class="text-2xl font-bold text-white mb-8 uppercase tracking-widest flex items-center gap-4"
-                            id={category.title
-                                .toLowerCase()
-                                .replace(/\s/g, "-")}
-                        >
-                            <span class="text-cyber-cyan">//</span>{" "}
-                            {category.title}
-                        </h2>
-                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                            {category.techs.map((tech) => (
-                                <StackCard name={tech.name} id={tech.name} />
-                            ))}
-                        </div>
-                    </div>
-                ))
-            }
-        </div>
+<Layout title="Redirecting to Dossier | PalOntEr">
+    <meta http-equiv="refresh" content="0;url=/portfolio/dossier" slot="head" />
+    <section class="max-w-4xl mx-auto px-6 py-32 text-center">
+        <h1 class="font-serif text-3xl text-[#F5F2EB] mb-4">Relocating to Technical Dossier...</h1>
+        <p class="text-sm text-[#A8A29E] font-mono mb-6">
+            Technical proficiencies, competencies, and system specifications have been structured into the Technical Dossier.
+        </p>
+        <a href="/portfolio/dossier" class="font-mono text-xs text-[#D97706] hover:underline uppercase tracking-wider">
+            Click here if not redirected automatically →
+        </a>
     </section>
 </Layout>

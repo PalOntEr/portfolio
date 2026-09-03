@@ -1,47 +1,58 @@
 @import "tailwindcss";
 
 @theme {
-    --color-cyber-cyan: #00f8f8;
-    --color-cyber-teal: #00baba;
-    --color-cyber-black: #000a0a;
-    --color-cyber-border: #003e3e;
+    --color-editorial-base: #141312;
+    --color-editorial-surface: #1a1918;
+    --color-editorial-surface-elevated: #22201e;
+    --color-editorial-border: #2e2b28;
+    --color-editorial-border-light: #3e3a35;
+    --color-editorial-bone: #f5f2eb;
+    --color-editorial-muted: #a8a29e;
+    --color-editorial-faint: #635f5b;
+    --color-editorial-amber: #d97706;
+    --color-editorial-amber-light: #f59e0b;
+    --color-editorial-emerald: #10b981;
 
-    --font-inter: "Inter", system-ui, sans-serif;
+    --font-serif: "Newsreader", Georgia, serif;
+    --font-sans: "Geist", system-ui, -apple-system, sans-serif;
+    --font-mono: "Geist Mono", ui-monospace, monospace;
 }
 
 @layer base {
     body {
-        background-color: var(--color-cyber-black);
-        color: #e5e7eb;
-        /* gray-200 */
-        font-family: var(--font-inter);
+        background-color: var(--color-editorial-base);
+        color: var(--color-editorial-bone);
+        font-family: var(--font-sans);
+        letter-spacing: -0.01em;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
     }
 
-    /* Smooth Scrollbar */
+    /* Refined Bookbinding Scrollbar */
     ::-webkit-scrollbar {
-        width: 8px;
+        width: 6px;
+        height: 6px;
     }
 
     ::-webkit-scrollbar-track {
-        background: #000a0a;
+        background: #141312;
     }
 
     ::-webkit-scrollbar-thumb {
-        background: #003e3e;
-        border-radius: 10px;
+        background: #2e2b28;
+        border-radius: 3px;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: #00f8f8;
+        background: #3e3a35;
     }
 
-    /* Custom Animations */
-    @keyframes reveal {
+    /* Editorial Reveal Animations */
+    @keyframes editorial-reveal {
         from {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(16px);
         }
-
         to {
             opacity: 1;
             transform: translateY(0);
@@ -49,6 +60,6 @@
     }
 
     .animate-reveal {
-        animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation: editorial-reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 }

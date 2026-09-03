@@ -1,142 +1,89 @@
 ---
 import ProjectCard from "../components/ProjectCard.astro";
-import StackCard from "../components/StackCard.astro";
 import Layout from "../layouts/Layout.astro";
-import { ArrowDown, ArrowRight } from "lucide-astro";
-import Prism from "../components/PrismBack.tsx";
-import SplitText from "../components/SplitText.tsx";
-
+import SchematicWireframe from "../components/SchematicWireframe.tsx";
+import { ArrowRight } from "lucide-astro";
 import { projectsData } from "../data/projects";
 
-const featuredProjects = projectsData.filter(p => 
-	["Colegio San Pedro de Idiomas", "PhotoHub", "Medical 365", "Derby Drift"].includes(p.name)
+const featuredProjects = projectsData.filter((p) =>
+	["photohub", "antdefender", "derby-drift", "csi"].includes(p.id)
 );
 ---
 
-<Layout title="PalOntEr Main page">
-	<!-- Hero Section -->
-	<section
-		class="relative flex flex-col items-center justify-center h-min-fit px-6 py-20 md:pb-0 md:pt-24 text-center"
-	>
-		<!-- Background Prism -->
-		<div
-			class="hidden sm:block absolute inset-0 -top-80 -z-10 opacity-40 pointer-events-none select-none"
-		>
-			<Prism
-				client:only="react"
-				timeScale={0.3}
-				scale={1.2}
-				height={5}
-				baseWidth={7}
-				noise={0.2}
-				hueShift={0}
-				colorFrequency={0.25}
-				glow={1}
-			/>
-		</div>
-
-		<!-- Landing Screen -->
-		<div
-			class="relative flex flex-col items-center justify-center sm:h-[calc(100vh-5rem)] min-h-fit text-center mt-20 sm:mt-0"
-		>
-			<h1
-				class="text-6xl md:text-8xl font-black tracking-tighter text-white mb-6 uppercase"
-			>
-				<div>
-					<SplitText 
-						client:only="react"
-						text="SCALABLE" 
-						delay={25}
-					/>
-					<SplitText 
-						client:only="react"
-						text="SOLUTIONS"
-						className="text-cyber-cyan"
-						delay={25}
-						from={{ opacity: 0, y: 40, delay: 0.225 }} 
-					/>					
+<Layout title="PalOntEr // Systems, Graphics & Full-Stack Engineering">
+	<!-- Editorial Frontispiece / Hero Section -->
+	<section class="max-w-6xl mx-auto px-6 pt-12 pb-20 md:pt-20 md:pb-28 border-b border-[#2E2B28]">
+		<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+			<!-- Left Column: Frontispiece Statement -->
+			<div class="lg:col-span-7 space-y-6 animate-reveal">
+				<div class="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-[#D97706]">
+					<span class="w-2 h-2 rounded-full bg-[#D97706]"></span>
+					<span>PALONTER // MONOGRAPH 2026</span>
 				</div>
-				<div class="">
-					<SplitText 
-						client:only="react"
-						text="EXPERTLY" 
-						delay={25}
-						from={{ opacity: 0, y: 40, delay: 0.45 }}
-					/>
-					<SplitText 
-						client:only="react"
-						text="CRAFTED"
-						className="text-cyber-cyan"
-						delay={25}
-						from={{ opacity: 0, y: 40, delay: 0.675 }} 
-					/>
+
+				<h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[#F5F2EB] leading-[1.12]">
+					Engineering at the intersection of <em class="italic font-serif text-[#D97706]">GPU compute</em>, low-level graphics, and resilient web platforms.
+				</h1>
+
+				<p class="text-base sm:text-lg text-[#A8A29E] leading-relaxed font-sans max-w-xl">
+					Independent software development authored by <strong class="text-[#F5F2EB] font-medium">Max Zertuche</strong>. Building hardware-accelerated image engines, raw DirectX 11 renderers, and modern distributed systems with deep technical intentionality.
+				</p>
+
+				<div class="flex flex-wrap items-center gap-4 pt-4 font-mono text-xs uppercase tracking-wider">
+					<a
+						href="/portfolio/projects"
+						class="px-5 py-3 rounded bg-[#F5F2EB] text-[#141312] font-semibold hover:bg-[#D97706] hover:text-[#141312] transition-colors flex items-center gap-2"
+					>
+						<span>Explore Works</span>
+						<ArrowRight class="w-3.5 h-3.5" />
+					</a>
+					<a
+						href="/portfolio/dossier"
+						class="px-5 py-3 rounded border border-[#3A3632] hover:border-[#D97706] text-[#F5F2EB] hover:text-[#D97706] transition-colors bg-[#1A1918]"
+					>
+						Read Dossier
+					</a>
 				</div>
-			</h1>
-
-			<p
-				class="text-lg md:text-xl text-gray-400 max-w-2xl mb-12 leading-relaxed animate-reveal"
-				style="animation-delay: 0.2s"
-			>
-				I create digital solutions that blend
-				<span class="text-white font-medium">elegant design</span>
-				with
-				<span class="text-white font-medium">scalable architecture</span
-				>
-				and uncompromising technical precision.
-			</p>
-
-			<div
-				class="flex flex-col sm:flex-row gap-6 mb-24 animate-reveal"
-				style="animation-delay: 0.3s"
-			>
-				<a
-					href="/portfolio/projects"
-					class="group relative flex items-center justify-center gap-2 px-10 py-4 bg-cyber-cyan text-black font-black rounded-xl hover:bg-white transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(0,248,248,0.4)]"
-				>
-					PROJECTS
-					<ArrowRight
-						class="w-5 h-5 group-hover:translate-x-1 transition-transform"
-					/>
-				</a>
 			</div>
 
-			<div>
-				<ArrowDown class="w-8 h-8 animate-bounce" />
+			<!-- Right Column: Interactive Engineering Schematic -->
+			<div class="lg:col-span-5 flex justify-center lg:justify-end animate-reveal" style="animation-delay: 0.2s">
+				<SchematicWireframe client:load />
 			</div>
 		</div>
 	</section>
 
-	<!-- Projects Grid -->
-	<section id="projects" class="max-w-7xl mx-auto px-6 py-20 md:pt-0 md:pb-24">
-		<div
-			class="flex flex-col md:flex-row justify-between md:items-end gap-8 mb-16"
-		>
-			<div class="animate-reveal">
-				<h2
-					class="text-4xl md:text-5xl font-black text-white mb-4 uppercase tracking-tighter"
-				>
-					Project Showcase
+	<!-- Section I: Selected Works Ledger -->
+	<section id="works" class="max-w-6xl mx-auto px-6 py-20 border-b border-[#2E2B28]">
+		<div class="flex flex-col md:flex-row justify-between md:items-end gap-6 mb-12">
+			<div>
+				<div class="font-mono text-xs uppercase tracking-widest text-[#D97706] mb-2">
+					INDEX // 01
+				</div>
+				<h2 class="font-serif text-3xl md:text-4xl font-normal text-[#F5F2EB]">
+					Selected Works
 				</h2>
-				<p
-					class="text-gray-500 max-w-md border-l-2 border-cyber-cyan pl-4"
-				>
-					A collection of some of my best projects.
-					<br />
-					<span class="text-cyber-cyan opacity-80">Press</span> on any <span class="text-cyber-cyan opacity-80">project card</span> to see more <span class="text-cyber-cyan opacity-80">details</span>.
+				<p class="text-sm text-[#A8A29E] mt-2 max-w-md font-sans">
+					Representative engineering monographs across GPU kernels, 3D graphics, and distributed web platforms.
 				</p>
 			</div>
+
 			<a
 				href="/portfolio/projects"
-				class="text-cyber-cyan font-bold hover:tracking-wider hover:scale-110 transition-all flex self-start sm:self-end items-center gap-2 uppercase text-sm"
+				class="font-mono text-xs uppercase tracking-wider text-[#D97706] hover:text-[#F5F2EB] transition-colors flex items-center gap-1.5 self-start md:self-end"
 			>
-				View More <ArrowRight class="w-4 h-4" />
+				<span>View Full Catalog ({projectsData.length})</span>
+				<ArrowRight class="w-3.5 h-3.5" />
 			</a>
 		</div>
 
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 			{featuredProjects.map((project) => (
 				<ProjectCard
+					index={project.index}
 					name={project.name}
+					domain={project.domain}
+					year={project.year}
 					imgsrc={project.imgsrc}
 					description={project.description}
 					link={project.link}
@@ -145,62 +92,81 @@ const featuredProjects = projectsData.filter(p =>
 			))}
 		</div>
 	</section>
-		
-	<!-- Tech Decals -->
-	<section class="max-w-7xl mx-auto px-6 py-20 md:pt-0 md:pb-24">
-		<div
-			class="flex flex-col md:flex-row justify-between md:items-end gap-8 mb-16"
-		>
-			<div class="animate-reveal">
-				<h2
-					class="text-4xl md:text-5xl font-black text-white mb-4 uppercase tracking-tighter"
-				>
-					Stack
+
+	<!-- Section II: Domains of Practice -->
+	<section class="max-w-6xl mx-auto px-6 py-20">
+		<div class="flex flex-col md:flex-row justify-between md:items-end gap-6 mb-12">
+			<div>
+				<div class="font-mono text-xs uppercase tracking-widest text-[#D97706] mb-2">
+					INDEX // 02
+				</div>
+				<h2 class="font-serif text-3xl md:text-4xl font-normal text-[#F5F2EB]">
+					Domains of Practice
 				</h2>
-				<p
-					class="text-gray-500 max-w-md border-l-2 border-cyber-cyan pl-4"
-				>
-					A snapshot of the technologies I work with.
-					<br />
-					<span class="text-cyber-cyan opacity-80">Hover </span> over each <span class="text-cyber-cyan opacity-80">item</span> to see a brief <span class="text-cyber-cyan opacity-80">description</span>.
+				<p class="text-sm text-[#A8A29E] mt-2 max-w-md font-sans">
+					Core engineering pillars structured by technical depth and operational domain.
 				</p>
 			</div>
+
 			<a
-				href="/portfolio/stack"
-				class="text-cyber-cyan font-bold hover:tracking-wider hover:scale-110 transition-all flex self-start sm:self-end items-center gap-2 uppercase text-sm"
+				href="/portfolio/dossier"
+				class="font-mono text-xs uppercase tracking-wider text-[#D97706] hover:text-[#F5F2EB] transition-colors flex items-center gap-1.5 self-start md:self-end"
 			>
-				View More <ArrowRight class="w-4 h-4" />
+				<span>Open Complete Dossier</span>
+				<ArrowRight class="w-3.5 h-3.5" />
 			</a>
 		</div>
-		<div
-			class="flex flex-col items-center gap-8 p-4 transition-opacity duration-700 animate-reveal"
-			style="animation-delay: 0.4s"
-		>
-			<div class="grid grid-cols-2 md:grid-cols-4 gap-12">
-				<a href="/portfolio/stack#frontend-&-styling">
-					<StackCard name="TypeScript" id="TypeScript" />
-				</a>
-				<a href="/portfolio/stack#backend-&-frameworks">
-					<StackCard name="Node.js" id="Node.js" />
-				</a>
-				<a href="/portfolio/stack#backend-&-frameworks">
-					<StackCard name="Astro" id="Astro" />
-				</a>
-				<a href="/portfolio/stack#frontend-&-styling">
-					<StackCard name="TailwindCSS" id="TailwindCSS" />
-				</a>
-				<a href="/portfolio/stack#languages">
-					<StackCard name="Python" id="Python" />
-				</a>
-				<a href="/portfolio/stack#cloud-&-devops">
-					<StackCard name="AWS" id="AWS" />
-				</a>
-				<a href="/portfolio/stack#cloud-&-devops">
-					<StackCard name="Docker" id="Docker" />
-				</a>
-				<a href="/portfolio/stack#databases">
-					<StackCard name="MS SQL" id="MS SQL" />
-				</a>
+
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+			<!-- Domain 1 -->
+			<div class="p-6 rounded border border-[#2E2B28] bg-[#1A1918] flex flex-col justify-between">
+				<div class="space-y-4">
+					<div class="font-mono text-xs text-[#D97706] uppercase tracking-wider">DOMAIN 01</div>
+					<h3 class="font-serif text-2xl font-normal text-[#F5F2EB]">GPU & Systems</h3>
+					<p class="text-sm text-[#A8A29E] leading-relaxed font-sans">
+						Hardware-level compute optimization, GPU thread scheduling, and custom graphics rendering pipelines.
+					</p>
+				</div>
+				<div class="mt-8 pt-4 border-t border-[#2E2B28]/60 flex flex-wrap gap-1.5 font-mono text-[10px] text-[#A8A29E]">
+					<span class="px-2 py-0.5 border border-[#2E2B28] rounded bg-[#141312]">CUDA</span>
+					<span class="px-2 py-0.5 border border-[#2E2B28] rounded bg-[#141312]">C++</span>
+					<span class="px-2 py-0.5 border border-[#2E2B28] rounded bg-[#141312]">DirectX 11</span>
+					<span class="px-2 py-0.5 border border-[#2E2B28] rounded bg-[#141312]">HLSL</span>
+				</div>
+			</div>
+
+			<!-- Domain 2 -->
+			<div class="p-6 rounded border border-[#2E2B28] bg-[#1A1918] flex flex-col justify-between">
+				<div class="space-y-4">
+					<div class="font-mono text-xs text-[#D97706] uppercase tracking-wider">DOMAIN 02</div>
+					<h3 class="font-serif text-2xl font-normal text-[#F5F2EB]">Cloud & Distributed</h3>
+					<p class="text-sm text-[#A8A29E] leading-relaxed font-sans">
+						Server-authoritative network topologies, containerized microservices, and high-performance database schema architectures.
+					</p>
+				</div>
+				<div class="mt-8 pt-4 border-t border-[#2E2B28]/60 flex flex-wrap gap-1.5 font-mono text-[10px] text-[#A8A29E]">
+					<span class="px-2 py-0.5 border border-[#2E2B28] rounded bg-[#141312]">Node.js</span>
+					<span class="px-2 py-0.5 border border-[#2E2B28] rounded bg-[#141312]">FastAPI</span>
+					<span class="px-2 py-0.5 border border-[#2E2B28] rounded bg-[#141312]">Cloud Run</span>
+					<span class="px-2 py-0.5 border border-[#2E2B28] rounded bg-[#141312]">SQL / MongoDB</span>
+				</div>
+			</div>
+
+			<!-- Domain 3 -->
+			<div class="p-6 rounded border border-[#2E2B28] bg-[#1A1918] flex flex-col justify-between">
+				<div class="space-y-4">
+					<div class="font-mono text-xs text-[#D97706] uppercase tracking-wider">DOMAIN 03</div>
+					<h3 class="font-serif text-2xl font-normal text-[#F5F2EB]">Interface & WebGL</h3>
+					<p class="text-sm text-[#A8A29E] leading-relaxed font-sans">
+						Static-first web architectures, sub-millisecond perceived latency, and interactive in-browser 3D canvas systems.
+					</p>
+				</div>
+				<div class="mt-8 pt-4 border-t border-[#2E2B28]/60 flex flex-wrap gap-1.5 font-mono text-[10px] text-[#A8A29E]">
+					<span class="px-2 py-0.5 border border-[#2E2B28] rounded bg-[#141312]">Astro</span>
+					<span class="px-2 py-0.5 border border-[#2E2B28] rounded bg-[#141312]">TypeScript</span>
+					<span class="px-2 py-0.5 border border-[#2E2B28] rounded bg-[#141312]">Three.js</span>
+					<span class="px-2 py-0.5 border border-[#2E2B28] rounded bg-[#141312]">TailwindCSS</span>
+				</div>
 			</div>
 		</div>
 	</section>

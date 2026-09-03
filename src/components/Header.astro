@@ -1,89 +1,84 @@
-<header class="fixed top-0 left-0 w-full z-50 px-6 py-4">
-  <nav
-    class="max-w-7xl mx-auto flex items-center justify-between bg-black/40 backdrop-blur-md border border-cyber-border rounded-2xl px-6 py-3 shadow-[0_0_20px_rgba(0,248,248,0.1)]"
-  >
-    <a href="/portfolio/" class="flex items-center gap-2">
-      <span class="text-xl font-bold tracking-tighter text-white">
-        Pal<span class="text-cyber-cyan">Ont</span>Er
+<header class="sticky top-0 left-0 w-full z-50 border-b border-[#2E2B28] bg-[#141312]/90 backdrop-blur-md transition-colors">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="/portfolio/" class="group flex items-center gap-3">
+      <span class="font-sans text-lg tracking-[0.12em] font-semibold text-[#F5F2EB] group-hover:text-[#D97706] transition-colors">
+        PALONTER
+      </span>
+      <span class="hidden sm:inline-block font-mono text-[10px] text-[#A8A29E] tracking-wider uppercase px-2 py-0.5 border border-[#2E2B28] rounded bg-[#1A1918]">
+        ENGINEERING
       </span>
     </a>
 
-    <div id="desktop-menu" class="hidden md:flex items-center gap-8">
+    <nav id="desktop-menu" class="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-wider">
       <a
         href="/portfolio/projects"
-        class="text-sm font-medium text-gray-400 hover:text-cyber-cyan hover:scale-110 active:scale-95 transition-all"
-        >Projects</a
+        class="text-[#A8A29E] hover:text-[#F5F2EB] transition-colors flex items-center gap-1.5 py-1"
       >
+        <span class="text-[#D97706]/70">01.</span> Works
+      </a>
       <a
-        href="/portfolio/achievements"
-        class="text-sm font-medium text-gray-400 hover:text-cyber-cyan hover:scale-110 active:scale-95 transition-all"
-        >Achievements</a
+        href="/portfolio/dossier"
+        class="text-[#A8A29E] hover:text-[#F5F2EB] transition-colors flex items-center gap-1.5 py-1"
       >
-      <a
-        href="/portfolio/stack"
-        class="text-sm font-medium text-gray-400 hover:text-cyber-cyan hover:scale-110 active:scale-95 transition-all"
-        >Stack</a
-      >
+        <span class="text-[#D97706]/70">02.</span> Dossier
+      </a>
       <a
         download="MaxZertuche_Resume.pdf"
         href="/portfolio/files/MaxZertuche_Resume.pdf"
         target="_blank"
-        class="px-5 py-2 text-sm font-semibold text-cyber-cyan border border-cyber-cyan/50 rounded-xl hover:bg-cyber-cyan/10 active:scale-95 transition-all"
+        class="text-[#F5F2EB] border border-[#3A3632] hover:border-[#D97706] bg-[#1A1918] px-3.5 py-1.5 rounded transition-all flex items-center gap-1 hover:text-[#D97706]"
       >
-        Resume
+        Resume <span class="text-[10px]">↗</span>
       </a>
-    </div>
+    </nav>
 
     <button
       id="mobile-menu-btn"
-      class="md:hidden p-2 text-gray-400 hover:text-cyber-cyan cursor-pointer z-50"
+      aria-label="Toggle Navigation Menu"
+      class="md:hidden p-2 text-[#A8A29E] hover:text-[#F5F2EB] transition-colors cursor-pointer"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
+        width="20"
+        height="20"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        stroke-width="2"
+        stroke-width="1.5"
         stroke-linecap="round"
         stroke-linejoin="round"
-        ><line x1="4" x2="20" y1="12" y2="12"></line><line
-          x1="4"
-          x2="20"
-          y1="6"
-          y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg
       >
+        <line x1="4" x2="20" y1="8" y2="8"></line>
+        <line x1="4" x2="20" y1="16" y2="16"></line>
+      </svg>
     </button>
-  </nav>
+  </div>
 
   <!-- Mobile Menu -->
   <div
     id="mobile-menu"
-    class="opacity-0 hidden transition-all duration-250 absolute top-20 left-6 right-6 flex flex-col items-center gap-6 mt-2 bg-black/40 backdrop-blur-lg border border-cyber-border rounded-2xl py-6 shadow-[0_0_20px_rgba(0,248,248,0.1)] md:hidden"
+    class="hidden border-b border-[#2E2B28] bg-[#1A1918] px-6 py-6 md:hidden flex flex-col gap-4 font-mono text-xs uppercase tracking-wider"
   >
     <a
       href="/portfolio/projects"
-      class="text-lg font-medium text-gray-400 hover:text-cyber-cyan transition-all"
-      >Projects</a
+      class="text-[#A8A29E] hover:text-[#F5F2EB] py-2 flex items-center gap-2 border-b border-[#2E2B28]/50"
     >
+      <span class="text-[#D97706]">01.</span> Works
+    </a>
     <a
-      href="/portfolio/achievements"
-      class="text-lg font-medium text-gray-400 hover:text-cyber-cyan transition-all"
-      >Achievements</a
+      href="/portfolio/dossier"
+      class="text-[#A8A29E] hover:text-[#F5F2EB] py-2 flex items-center gap-2 border-b border-[#2E2B28]/50"
     >
-    <a
-      href="/portfolio/stack"
-      class="text-lg font-medium text-gray-400 hover:text-cyber-cyan transition-all"
-      >Stack</a
-    >
+      <span class="text-[#D97706]">02.</span> Dossier
+    </a>
     <a
       download="MaxZertuche_Resume.pdf"
       href="/portfolio/files/MaxZertuche_Resume.pdf"
       target="_blank"
-      class="px-5 py-2 text-lg font-semibold text-cyber-cyan border border-cyber-cyan/50 rounded-xl hover:bg-cyber-cyan/10 transition-all"
+      class="text-[#D97706] py-2 flex items-center justify-between"
     >
-      Resume
+      <span>Resume (Max Zertuche)</span>
+      <span>↗</span>
     </a>
   </div>
 </header>
@@ -94,13 +89,8 @@
     const menu = document.getElementById("mobile-menu");
 
     if (btn && menu) {
-      // Using onclick ensures we don't accidentally attach multiple listeners across navigations
       btn.onclick = () => {
         menu.classList.toggle("hidden");
-        // A tiny timeout ensures the browser registers the removal of 'hidden' before transitioning opacity
-        setTimeout(() => {
-          menu.classList.toggle("opacity-0");
-        }, 10);
       };
     }
   });

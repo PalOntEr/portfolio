@@ -10,8 +10,8 @@ interface Props {
 }
 
 const {
-	title = "PalOntEr | Cyber-Minimalist Portfolio",
-	description = "A modern, high-performance developer portfolio with a cyber-minimalist design.",
+	title = "PalOntEr // Systems, Graphics & Full-Stack Engineering",
+	description = "Engineering journal and portfolio of PalOntEr. Spanning GPU acceleration, low-level graphics, and resilient web platforms.",
 } = Astro.props;
 ---
 
@@ -29,48 +29,40 @@ const {
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&display=swap"
 			rel="stylesheet"
 		/>
 	</head>
-	<body class="selection:bg-cyber-cyan/30 selection:text-cyber-cyan">
-		<!-- Dynamic Background -->
+	<body class="bg-[#141312] text-[#F5F2EB] font-sans antialiased selection:bg-[#d97706]/30 selection:text-[#fde68a] min-h-screen flex flex-col">
+		<!-- Subtle Archival Warm Ambient Backing -->
 		<div
-			class="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,#001a1a_0%,#000000_100%)]"
-		>
-		</div>
-		<div
-			class="fixed inset-0 -z-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 pointer-events-none"
+			class="fixed inset-0 -z-10 pointer-events-none bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(60,50,40,0.25),transparent_100%)]"
 		>
 		</div>
 
 		<Header />
 
-		<main class="min-h-screen">
+		<main class="flex-1">
 			<slot />
 		</main>
 
 		<Footer />
 
-		<!-- Global Page Loader -->
+		<!-- Archival Page Loader -->
 		<div
 			id="global-loader"
-			class="fixed inset-0 z-100 bg-black/60 backdrop-blur-lg flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300"
+			class="fixed inset-0 z-100 bg-[#141312]/80 backdrop-blur-sm flex flex-col items-center justify-center opacity-0 pointer-events-none transition-opacity duration-200"
 		>
-			<div class="w-16 h-16 border-4 border-white/10 border-t-cyber-cyan border-r-cyber-cyan rounded-full animate-spin shadow-[0_0_15px_rgba(0,248,248,0.5)]"></div>
-			<span class="mt-6 text-cyber-cyan text-sm font-bold tracking-[0.3em] uppercase animate-pulse">Loading</span>			
-			<span class="mt-2 text-gray-400 text-xs tracking-wide">Please wait while the content loads...</span>
+			<div class="w-8 h-8 border border-[#3A3632] border-t-[#D97706] rounded-full animate-spin"></div>
+			<span class="mt-4 font-mono text-[11px] text-[#A8A29E] tracking-widest uppercase">Fetching Dispatch</span>
 		</div>
 
 		<script>
-			// Fired before the new page is fetched
 			document.addEventListener("astro:before-preparation", () => {
 				document.getElementById("global-loader")?.classList.remove("opacity-0", "pointer-events-none");
 			});
 
-			// Fired after the new page is fully loaded and swapped
 			document.addEventListener("astro:page-load", () => {
-				// Hide the loader 
 				document.getElementById("global-loader")?.classList.add("opacity-0", "pointer-events-none");
 			});
 		</script>

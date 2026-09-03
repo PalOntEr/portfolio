@@ -1,160 +1,200 @@
 ---
-import ProjectCard from "../components/ProjectCard.astro";
 import Layout from "../layouts/Layout.astro";
-import { Layers, Code2 } from "lucide-astro";
+import { Image } from "astro:assets";
+import { ArrowRight, ChevronDown, ExternalLink } from "lucide-astro";
 import { projectsData as projects } from "../data/projects";
 
-const allTypes = [...new Set(projects.flatMap((p) => p.types))].sort();
-const allTechs = [...new Set(projects.flatMap((p) => p.stack))].sort();
-
-const projectsByType = allTypes.map((type) => ({
-    title: type,
-    items: projects.filter((p) => p.types.includes(type)),
-}));
-
-const projectsByTech = allTechs.map((tech) => ({
-    title: tech,
-    items: projects.filter((p) => p.stack.includes(tech)),
-}));
+const domains = ["All", "GPU & Systems", "Graphics & Games", "Web & Cloud", "Tools & Data"];
 ---
 
-<Layout title="PalOntEr | Projects">
-    <section class="flex flex-col px-6 max-w-7xl mx-auto pt-32 pb-20 gap-12">
-        <header
-            class="flex flex-col md:flex-row justify-between items-end gap-8 animate-reveal"
-        >
-            <div class="max-w-2xl">
-                <h1
-                    class="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tighter"
-                >
-                    Project <span class="text-cyber-cyan">Archives</span>
-                </h1>
-                <p
-                    class="text-gray-400 text-lg border-l-2 border-cyber-cyan pl-6"
-                >
-                    A comprehensive library of my technical work, organized for
-                    efficient exploration.
-                    <br>
-                    <span class="text-cyber-cyan opacity-80">Press</span> on any <span class="text-cyber-cyan opacity-80">project</span>'s card to see more <span class="text-cyber-cyan opacity-80">details</span>.
-                </p>
+<Layout title="Works // PalOntEr Engineering Monographs">
+    <section class="max-w-6xl mx-auto px-6 pt-12 pb-24 md:pt-20">
+        <!-- Monograph Header -->
+        <header class="mb-14 pb-8 border-b border-[#2E2B28] animate-reveal">
+            <div class="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#D97706] mb-3">
+                <span class="w-2 h-2 rounded-full bg-[#D97706]"></span>
+                <span>VOL. 26 // ENGINEERING MONOGRAPHS</span>
             </div>
+            <h1 class="font-serif text-4xl sm:text-6xl font-normal text-[#F5F2EB] tracking-tight mb-4">
+                Selected Works
+            </h1>
+            <p class="text-base sm:text-lg text-[#A8A29E] max-w-2xl font-sans leading-relaxed">
+                An annotated catalog of graphics engines, GPU compute kernels, and distributed web platforms authored by <strong class="text-[#F5F2EB] font-medium">PalOntEr (Max Zertuche)</strong>. Expand any plate to inspect the underlying architectural trade-offs.
+            </p>
 
-            <!-- View Toggle -->
-            <div
-                class="flex bg-white/5 max-w-full backdrop-blur-md border border-white/10 p-1 rounded-xl self-start md:self-end"
-            >
-                <button
-                    id="toggle-type"
-                    class="view-toggle-btn active flex items-center gap-2 px-6 py-2.5 rounded-lg text-xs sm:text-sm font-bold uppercase tracking-widest transition-all"
-                >
-                    <Layers class="w-4 h-4" /> Category
-                </button>
-                <button
-                    id="toggle-tech"
-                    class="view-toggle-btn flex items-center gap-2 px-6 py-2.5 rounded-lg text-xs sm:text-sm font-bold uppercase tracking-widest transition-all"
-                >
-                    <Code2 class="w-4 h-4" /> Technology
-                </button>
+            <!-- Domain Filter Chips -->
+            <div class="flex flex-wrap items-center gap-2 pt-6 font-mono text-xs">
+                {domains.map((domain) => (
+                    <button
+                        data-filter={domain}
+                        class={`filter-btn px-3.5 py-1.5 rounded border transition-colors cursor-pointer ${
+                            domain === "All"
+                                ? "bg-[#F5F2EB] text-[#141312] border-[#F5F2EB] font-semibold active-filter"
+                                : "bg-[#1A1918] text-[#A8A29E] border-[#2E2B28] hover:text-[#F5F2EB] hover:border-[#3A3632]"
+                        }`}
+                    >
+                        {domain}
+                    </button>
+                ))}
             </div>
         </header>
 
-        <!-- View Containers -->
-        <div id="view-by-type" class="view-container space-y-24">
-            {
-                projectsByType.map((group, groupIdx) => (
-                    <div
-                        class="animate-reveal"
-                        style={`animation-delay: ${groupIdx * 0.1}s`}
-                    >
-                        <div class="flex items-center gap-4 mb-10">
-                            <h2 class="text-3xl font-black text-white uppercase tracking-tighter">
-                                {group.title}s
-                            </h2>
-                            <div class="h-px grow bg-linear-to-r from-cyber-cyan/50 to-transparent" />
-                            <span class="text-xs font-mono text-cyber-cyan/60">
-                                {group.items.length} Project(s)
-                            </span>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                            {group.items.map((project) => (
-                                <ProjectCard {...project} />
-                            ))}
-                        </div>
-                    </div>
-                ))
-            }
-        </div>
+        <!-- Monograph Works Ledger -->
+        <div class="space-y-6" id="monograph-ledger">
+            {projects.map((project) => (
+                <article
+                    data-domain={project.domain}
+                    class="project-entry rounded border border-[#2E2B28] bg-[#1A1918] transition-all hover:border-[#3A3632] overflow-hidden"
+                >
+                    <!-- Summary Row / Interactive Header -->
+                    <details class="group/case cursor-pointer">
+                        <summary class="list-none p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 select-none focus:outline-none focus:ring-1 focus:ring-[#D97706]/50">
+                            <div class="flex items-start md:items-center gap-6">
+                                <span class="font-mono text-xs text-[#D97706] font-semibold shrink-0 pt-1 md:pt-0">
+                                    {project.index}.
+                                </span>
+                                <div>
+                                    <div class="flex flex-wrap items-center gap-3 mb-1.5">
+                                        <h2 class="font-serif text-2xl md:text-3xl font-medium text-[#F5F2EB] group-hover/case:text-[#D97706] transition-colors">
+                                            {project.name}
+                                        </h2>
+                                        <span class="font-mono text-[10px] text-[#A8A29E] uppercase tracking-wider px-2 py-0.5 rounded border border-[#2E2B28] bg-[#141312]">
+                                            {project.domain}
+                                        </span>
+                                    </div>
+                                    <p class="text-sm text-[#A8A29E] max-w-xl font-sans line-clamp-2 leading-relaxed">
+                                        {project.description}
+                                    </p>
+                                </div>
+                            </div>
 
-        <div id="view-by-tech" class="view-container hidden space-y-24">
-            {
-                projectsByTech.map((group, groupIdx) => (
-                    <div
-                        class="animate-reveal"
-                        style={`animation-delay: ${groupIdx * 0.05}s`}
-                    >
-                        <div class="flex items-center gap-4 mb-10">
-                            <h2 class="text-3xl font-black text-white uppercase tracking-tighter">
-                                {group.title}
-                            </h2>
-                            <div class="h-px grow bg-linear-to-r from-cyber-teal/50 to-transparent" />
-                            <span class="text-xs font-mono text-cyber-teal/60">
-                                {group.items.length} Project(s)
-                            </span>
+                            <div class="flex items-center justify-between md:justify-end gap-6 shrink-0 pt-4 md:pt-0 border-t md:border-t-0 border-[#2E2B28]/60">
+                                <div class="hidden lg:flex flex-wrap gap-1.5 font-mono text-[10px] text-[#A8A29E] max-w-xs justify-end">
+                                    {project.stack.slice(0, 3).map((tech) => (
+                                        <span class="px-2 py-0.5 border border-[#2E2B28] rounded bg-[#141312]">
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </div>
+
+                                <div class="flex items-center gap-2 font-mono text-xs text-[#D97706] group-hover/case:text-[#F5F2EB] transition-colors">
+                                    <span class="group-open/case:hidden">Inspect Study</span>
+                                    <span class="hidden group-open/case:inline">Collapse</span>
+                                    <ChevronDown class="w-4 h-4 transition-transform duration-200 group-open/case:rotate-180" />
+                                </div>
+                            </div>
+                        </summary>
+
+                        <!-- Expanded Case Study Plate -->
+                        <div class="px-6 pb-8 md:px-8 md:pb-10 pt-2 border-t border-[#2E2B28]/60 bg-[#161514] cursor-default">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-6">
+                                <!-- Architectural Figures / Media -->
+                                <div class="lg:col-span-6 space-y-3">
+                                    <div class="relative aspect-[16/10] overflow-hidden rounded border border-[#2E2B28] bg-[#11100F]">
+                                        <Image
+                                            loading="lazy"
+                                            src={project.imgsrc as any}
+                                            alt={project.name}
+                                            width={700}
+                                            height={438}
+                                            class="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                    <div class="font-mono text-[10px] text-[#635F5B] flex justify-between tracking-wider uppercase px-1">
+                                        <span>FIG. {project.index}.1 // {project.name} DEPLOYMENT</span>
+                                        <span>YEAR: {project.year}</span>
+                                    </div>
+                                </div>
+
+                                <!-- Technical Study Text -->
+                                <div class="lg:col-span-6 flex flex-col justify-between space-y-6">
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4 class="font-mono text-xs uppercase tracking-wider text-[#D97706] mb-1">
+                                                01. Engineering Constraint
+                                            </h4>
+                                            <p class="text-sm text-[#A8A29E] font-sans leading-relaxed">
+                                                {project.technicalDetails.problem}
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <h4 class="font-mono text-xs uppercase tracking-wider text-[#D97706] mb-1">
+                                                02. Architecture & Implementation
+                                            </h4>
+                                            <p class="text-sm text-[#A8A29E] font-sans leading-relaxed">
+                                                {project.technicalDetails.architecture}
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <h4 class="font-mono text-xs uppercase tracking-wider text-[#10B981] mb-1">
+                                                03. Observed Outcome
+                                            </h4>
+                                            <p class="text-sm text-[#F5F2EB] font-sans leading-relaxed">
+                                                {project.technicalDetails.highlight}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Bottom Metadata Bar -->
+                                    <div class="pt-4 border-t border-[#2E2B28] flex flex-wrap items-center justify-between gap-4">
+                                        <div class="flex flex-wrap gap-1.5 font-mono text-[10px] text-[#A8A29E]">
+                                            {project.stack.map((tech) => (
+                                                <span class="px-2 py-0.5 border border-[#2E2B28] rounded bg-[#141312]">
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
+
+                                        {project.link && (
+                                            <a
+                                                href={project.link}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="font-mono text-xs text-[#141312] bg-[#F5F2EB] hover:bg-[#D97706] px-4 py-2 rounded font-semibold transition-colors flex items-center gap-1.5"
+                                            >
+                                                <span>Source / Dispatch</span>
+                                                <ExternalLink class="w-3.5 h-3.5" />
+                                            </a>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                            {group.items.map((project) => (
-                                <ProjectCard {...project} />
-                            ))}
-                        </div>
-                    </div>
-                ))
-            }
+                    </details>
+                </article>
+            ))}
         </div>
     </section>
 
-    <style>
-        .view-toggle-btn {
-            color: rgba(255, 255, 255, 0.4);
-        }
-        .view-toggle-btn:hover {
-            color: white;
-        }
-        .view-toggle-btn.active {
-            background-color: var(--color-cyber-cyan);
-            color: black;
-            box-shadow: 0 0 20px rgba(0, 248, 248, 0.3);
-        }
-        #toggle-tech.active {
-            background-color: var(--color-cyber-teal);
-            box-shadow: 0 0 20px rgba(0, 186, 186, 0.3);
-        }
-    </style>
 
     <script>
         document.addEventListener("astro:page-load", () => {
-            const btnType = document.getElementById("toggle-type");
-            const btnTech = document.getElementById("toggle-tech");
-            const viewType = document.getElementById("view-by-type");
-            const viewTech = document.getElementById("view-by-tech");
+            const filterBtns = document.querySelectorAll(".filter-btn");
+            const entries = document.querySelectorAll(".project-entry");
 
-            function switchView(target: string) {
-                if (target === "type") {
-                    btnType?.classList.add("active");
-                    btnTech?.classList.remove("active");
-                    viewType?.classList.remove("hidden");
-                    viewTech?.classList.add("hidden");
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                } else {
-                    btnTech?.classList.add("active");
-                    btnType?.classList.remove("active");
-                    viewTech?.classList.remove("hidden");
-                    viewType?.classList.add("hidden");
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                }
-            }
+            filterBtns.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const domain = btn.getAttribute("data-filter");
 
-            btnType?.addEventListener("click", () => switchView("type"));
-            btnTech?.addEventListener("click", () => switchView("tech"));
+                    filterBtns.forEach((b) => {
+                        b.classList.remove("bg-[#F5F2EB]", "text-[#141312]", "border-[#F5F2EB]", "font-semibold");
+                        b.classList.add("bg-[#1A1918]", "text-[#A8A29E]", "border-[#2E2B28]");
+                    });
+                    btn.classList.remove("bg-[#1A1918]", "text-[#A8A29E]", "border-[#2E2B28]");
+                    btn.classList.add("bg-[#F5F2EB]", "text-[#141312]", "border-[#F5F2EB]", "font-semibold");
+
+                    entries.forEach((entry) => {
+                        const entryDomain = entry.getAttribute("data-domain");
+                        if (domain === "All" || entryDomain === domain) {
+                            (entry as HTMLElement).style.display = "block";
+                        } else {
+                            (entry as HTMLElement).style.display = "none";
+                        }
+                    });
+                });
+            });
         });
     </script>
 </Layout>
