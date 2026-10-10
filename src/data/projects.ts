@@ -39,6 +39,23 @@ export const projectsData: ProjectMonograph[] = [
         }
     },
     {
+        id: "llm-cmd-game",
+        index: "10",
+        name: "LLM Terminal Game",
+        domain: "Graphics & Games",
+        year: "2026",
+        imgsrc: images["../assets/projects/LLMCMDGame.png"].default,
+        description: "Terminal-based narrative game engine combining local Ollama models with living ANSI/ASCII character animation, Kokoro TTS voice synthesis, and background memory compaction.",
+        link: "https://github.com/PalOntEr/LLM-CMD-Game",
+        stack: ["Python", "Ollama", "Kokoro TTS", "ANSI / ASCII"],
+        types: ["Game Engine", "Terminal AI"],
+        technicalDetails: {
+            problem: "Terminal LLM chat games typically suffer from high model latency, UI freezing during generation, context drift across long conversations, and sterile, text-only walls devoid of personality.",
+            architecture: "Engineered a non-blocking terminal animation engine decoupling ANSI canvas rendering from asynchronous Ollama inference and local Kokoro TTS synthesis. Implemented a sliding conversational window bounded by an attributed memory compaction thread ([Player] vs [Character]) and strict structured JSON response contracts.",
+            highlight: "Delivered fluid 12 FPS ASCII animations with real-time lip-synced speech while the player types, reducing turn latency by ~25x via thinking token suppression and preserving long-term narrative coherence."
+        }
+    },
+    {
         id: "antdefender",
         index: "02",
         name: "AntDefender",
